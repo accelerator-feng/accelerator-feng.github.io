@@ -1,0 +1,478 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>FCC初级算法题整理 | 和光同尘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Yin Feng">
+    
+
+    
+    <meta name="description" content="FCC前端部分快完成了。来整理一下FCC的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FCC初级算法题整理">
+<meta property="og:url" content="http://accelerator-feng.github.io/2017/01/19/FCC初级算法题整理/index.html">
+<meta property="og:site_name" content="和光同尘">
+<meta property="og:description" content="FCC前端部分快完成了。来整理一下FCC的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。">
+<meta property="og:updated_time" content="2017-01-19T09:48:55.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FCC初级算法题整理">
+<meta name="twitter:description" content="FCC前端部分快完成了。来整理一下FCC的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="和光同尘" title="和光同尘"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="和光同尘">和光同尘</a></h1>
+				<h2 class="blog-motto">前端小白的学习笔记</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 4217965264557764531 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/01/19/FCC初级算法题整理/" title="FCC初级算法题整理" itemprop="url">FCC初级算法题整理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yin Feng" target="_blank" itemprop="author">Yin Feng</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-19T08:06:37.000Z" itemprop="datePublished"> 发表于 2017-01-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse-a-String-翻转字符串"><span class="toc-number">1.</span> <span class="toc-text">Reverse a String(翻转字符串)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Factorialize-a-Number-阶乘"><span class="toc-number">2.</span> <span class="toc-text">Factorialize a Number(阶乘)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Check-for-Palindromes-回文检测"><span class="toc-number">3.</span> <span class="toc-text">Check for Palindromes(回文检测)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Find-the-Longest-Word-in-a-String"><span class="toc-number">4.</span> <span class="toc-text">Find the Longest Word in a String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Find-the-Longest-Word-in-a-String-1"><span class="toc-number">5.</span> <span class="toc-text">Find the Longest Word in a String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Truncate-a-string"><span class="toc-number">6.</span> <span class="toc-text">Truncate a string</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutations"><span class="toc-number">7.</span> <span class="toc-text">Mutations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seek-and-Destroy"><span class="toc-number">8.</span> <span class="toc-text">Seek and Destroy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-do-I-belong"><span class="toc-number">9.</span> <span class="toc-text">Where do I belong</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caesars-Cipher"><span class="toc-number">10.</span> <span class="toc-text">Caesars Cipher</span></a></li></ol>
+		
+		</div>
+		
+		<p>FCC前端部分快完成了。来整理一下FCC的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。<br><a id="more"></a><br>这些是初学时做的题，毕竟当时写的代码太蠢<em>(:з)∠)</em>，有些改成了更好的写法。</p>
+<h2 id="Reverse-a-String-翻转字符串"><a href="#Reverse-a-String-翻转字符串" class="headerlink" title="Reverse a String(翻转字符串)"></a>Reverse a String(翻转字符串)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Factorialize-a-Number-阶乘"><a href="#Factorialize-a-Number-阶乘" class="headerlink" title="Factorialize a Number(阶乘)"></a>Factorialize a Number(阶乘)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">factorialize</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="keyword">return</span> num * factorialize(num - <span class="number">1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="Check-for-Palindromes-回文检测"><a href="#Check-for-Palindromes-回文检测" class="headerlink" title="Check for Palindromes(回文检测)"></a>Check for Palindromes(回文检测)</h2><p>  如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> originStr = str.replace(<span class="regexp">/[\W_]/g</span>, <span class="string">""</span>).toLowerCase(); <span class="comment">//  /[\W_]/g匹配所有的字母、数字以外的字符</span></div><div class="line">    <span class="keyword">var</span> newStr = originStr.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">    <span class="keyword">return</span> newStr === originStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Find-the-Longest-Word-in-a-String"><a href="#Find-the-Longest-Word-in-a-String" class="headerlink" title="Find the Longest Word in a String"></a>Find the Longest Word in a String</h2><p>  找到提供的句子中最长的单词，并计算它的长度。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">findLongestWord</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> s.split(<span class="string">' '</span>)</div><div class="line">        .reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">Math</span>.max(x, y.length);</div><div class="line">        &#125;, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Find-the-Longest-Word-in-a-String-1"><a href="#Find-the-Longest-Word-in-a-String-1" class="headerlink" title="Find the Longest Word in a String"></a>Find the Longest Word in a String</h2><p>  确保字符串的每个单词首字母都大写，其余部分小写。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">titleCase</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.toLowerCase().replace(<span class="regexp">/( |^)[a-z]/g</span>, (L) =&gt; L.toUpperCase());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Truncate-a-string"><a href="#Truncate-a-string" class="headerlink" title="Truncate a string"></a>Truncate a string</h2><p>  如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。插入到字符串尾部的三个点号也会计入字符串的长度。但是果指<br>定的参数num小于或等于3，则添加的三个点号不会计入字符串的长度。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">truncate</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">3</span> &amp;&amp; str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num) + <span class="string">"..."</span>; &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num - <span class="number">3</span>) + <span class="string">"..."</span>; &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h2><p>  如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">truncate</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">3</span> &amp;&amp; str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num) + <span class="string">"..."</span>; &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num - <span class="number">3</span>) + <span class="string">"..."</span>; &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Seek-and-Destroy"><a href="#Seek-and-Destroy" class="headerlink" title="Seek and Destroy"></a>Seek and Destroy</h2><p>  实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> arg = <span class="built_in">arguments</span>;</div><div class="line">    <span class="keyword">return</span> arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; arr.length; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (item == arg[i]) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Where-do-I-belong"><a href="#Where-do-I-belong" class="headerlink" title="Where do I belong"></a>Where do I belong</h2><p>  先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。<br>  where([20,3,5], 19) 应该返回2。因为数组会先排序为<br>[3,5,20]，19插入到数组[3,5,20]后变成[3,5,19,20]，而19对应的索引值就是2。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">where</span>(<span class="params">arr, num</span>) </span>&#123;</div><div class="line">    arr.push(num);</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> value1 - value2;</div><div class="line">    &#125;</div><div class="line">    arr.sort(compare);</div><div class="line">    arr = arr.indexOf(num);</div><div class="line">    <span class="keyword">return</span> arr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Caesars-Cipher"><a href="#Caesars-Cipher" class="headerlink" title="Caesars Cipher"></a>Caesars Cipher</h2><p>  下面我们来介绍风靡全球的凯撒密码Caesar cipher，又叫移位密码。移位密码也就是密码中的字母会按照指定的数量来做移位。<br>  一个常见的案例就是ROT13密码，字母会移位13个位置。由’A’ ↔ ‘N’, ‘B’ ↔ ‘O’，以此类推。<br>  写一个ROT13函数，实现输入加密字符串，输出解密字符串。<br>所有的字母都是大写，不要转化任何非字母形式的字符(例如：空格，标点符号)，遇到这些特殊字符，跳过它们。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rot13</span>(<span class="params">str</span>) </span>&#123; <span class="comment">// LBH QVQ VG!</span></div><div class="line">    <span class="comment">// Split str into a character array</span></div><div class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>)</div><div class="line">        <span class="comment">// Iterate over each character in the array</span></div><div class="line">        .map(<span class="function"><span class="keyword">function</span>(<span class="params">char</span>) </span>&#123;</div><div class="line">            <span class="comment">// Convert char to a character code</span></div><div class="line">            x = char.charCodeAt(<span class="number">0</span>);</div><div class="line">            <span class="comment">// Checks if character lies between A-Z</span></div><div class="line">            <span class="keyword">if</span> (x &lt; <span class="number">65</span> || x &gt; <span class="number">90</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x); <span class="comment">// Return un-converted character</span></div><div class="line">            &#125;</div><div class="line">            <span class="comment">//N = ASCII 78, if the character code is less than 78, shift forward 13 places</span></div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">78</span>) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x + <span class="number">13</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// Otherwise shift the character 13 places backward</span></div><div class="line">            <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x - <span class="number">13</span>);</div><div class="line">        &#125;).join(<span class="string">''</span>); <span class="comment">// Rejoin the array into a string</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/算法/">算法</a><a href="/tags/API/">API</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://accelerator-feng.github.io/2017/01/19/FCC初级算法题整理/" data-title="FCC初级算法题整理 | 和光同尘" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/01/11/第一篇文章/"  title="我的第一篇文章">
+ <strong>下一篇：</strong><br/> 
+ <span>我的第一篇文章
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reverse-a-String-翻转字符串"><span class="toc-number">1.</span> <span class="toc-text">Reverse a String(翻转字符串)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Factorialize-a-Number-阶乘"><span class="toc-number">2.</span> <span class="toc-text">Factorialize a Number(阶乘)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Check-for-Palindromes-回文检测"><span class="toc-number">3.</span> <span class="toc-text">Check for Palindromes(回文检测)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Find-the-Longest-Word-in-a-String"><span class="toc-number">4.</span> <span class="toc-text">Find the Longest Word in a String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Find-the-Longest-Word-in-a-String-1"><span class="toc-number">5.</span> <span class="toc-text">Find the Longest Word in a String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Truncate-a-string"><span class="toc-number">6.</span> <span class="toc-text">Truncate a string</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mutations"><span class="toc-number">7.</span> <span class="toc-text">Mutations</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Seek-and-Destroy"><span class="toc-number">8.</span> <span class="toc-text">Seek and Destroy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-do-I-belong"><span class="toc-number">9.</span> <span class="toc-text">Where do I belong</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caesars-Cipher"><span class="toc-number">10.</span> <span class="toc-text">Caesars Cipher</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="accelerator-feng" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blog/" title="blog">blog<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.freecodecamp.cn/accelerator-feng" target="_blank" title="freeCodeCamp">freeCodeCamp</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ife.baidu.com/2016/task/all" target="_blank" title="百度IFE">百度IFE</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">3</span></li></ul>
+  </div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 未来的前端攻城狮 <br/>
+			Stay hungry. Stay foolish.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/accelerator-feng" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/yin-feng-56-5/activities" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:619772719@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Yin Feng">Yin Feng</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
