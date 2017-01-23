@@ -1,28 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>和光同尘</title>
-  <subtitle>前端小白的学习笔记</subtitle>
-  <link href="/atom.xml" rel="self"/>
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
   
-  <link href="http://yinfengblog.com/"/>
-  <updated>2017-01-23T07:44:07.325Z</updated>
-  <id>http://yinfengblog.com/</id>
-  
-  <author>
-    <name>Yin Feng</name>
+    <title>FCC中级算法题整理 | 和光同尘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>FCC中级算法题整理</title>
-    <link href="http://yinfengblog.com/JavaScript/2017/01/23/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86.html"/>
-    <id>http://yinfengblog.com/JavaScript/2017/01/23/FCC中级算法题整理.html</id>
-    <published>2017-01-23T05:33:21.000Z</published>
-    <updated>2017-01-23T07:44:07.325Z</updated>
+    <meta name="author" content="Yin Feng">
     
-    <content type="html"><![CDATA[<p><a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>中级算法题整理解析。<br><a id="more"></a> </p>
+
+    
+    <meta name="description" content="freeCodeCamp中级算法题整理解析。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FCC中级算法题整理">
+<meta property="og:url" content="http://yinfengblog.com/JavaScript/2017/01/23/FCC中级算法题整理.html">
+<meta property="og:site_name" content="和光同尘">
+<meta property="og:description" content="freeCodeCamp中级算法题整理解析。">
+<meta property="og:updated_time" content="2017-01-23T07:44:07.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FCC中级算法题整理">
+<meta name="twitter:description" content="freeCodeCamp中级算法题整理解析。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="和光同尘" title="和光同尘"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="和光同尘">和光同尘</a></h1>
+				<h2 class="blog-motto">前端小白的学习笔记</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/categories">categories</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/JavaScript/2017/01/23/FCC中级算法题整理.html" title="FCC中级算法题整理" itemprop="url">FCC中级算法题整理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yin Feng" target="_blank" itemprop="author">Yin Feng</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-23T05:33:21.000Z" itemprop="datePublished"> 发表于 2017-01-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Numbers-in-a-Range"><span class="toc-number">1.</span> <span class="toc-text">Sum All Numbers in a Range</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diff-Two-Arrays"><span class="toc-number">2.</span> <span class="toc-text">Diff Two Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roman-Numeral-Converter"><span class="toc-number">3.</span> <span class="toc-text">Roman Numeral Converter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-art-thou"><span class="toc-number">4.</span> <span class="toc-text">Where art thou</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-and-Replace"><span class="toc-number">5.</span> <span class="toc-text">Search and Replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pig-Latin"><span class="toc-number">6.</span> <span class="toc-text">Pig Latin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNA-Pairing"><span class="toc-number">7.</span> <span class="toc-text">DNA Pairing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Missing-letters"><span class="toc-number">8.</span> <span class="toc-text">Missing letters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boo-who"><span class="toc-number">9.</span> <span class="toc-text">Boo who</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorted-Union"><span class="toc-number">10.</span> <span class="toc-text">Sorted Union</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convert-HTML-Entities"><span class="toc-number">11.</span> <span class="toc-text">Convert HTML Entities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spinal-Tap-Case"><span class="toc-number">12.</span> <span class="toc-text">Spinal Tap Case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Odd-Fibonacci-Numbers"><span class="toc-number">13.</span> <span class="toc-text">Sum All Odd Fibonacci Numbers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Primes"><span class="toc-number">14.</span> <span class="toc-text">Sum All Primes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smallest-Common-Multiple"><span class="toc-number">15.</span> <span class="toc-text">Smallest Common Multiple</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Finders-Keepers"><span class="toc-number">16.</span> <span class="toc-text">Finders Keepers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Drop-it"><span class="toc-number">17.</span> <span class="toc-text">Drop it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steamroller"><span class="toc-number">18.</span> <span class="toc-text">Steamroller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Agents"><span class="toc-number">19.</span> <span class="toc-text">Binary Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Everything-Be-True"><span class="toc-number">20.</span> <span class="toc-text">Everything Be True</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arguments-Optional"><span class="toc-number">21.</span> <span class="toc-text">Arguments Optional</span></a></li></ol>
+		
+		</div>
+		
+		<p><a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>中级算法题整理解析。<br><a id="more"></a> </p>
 <h2 id="Sum-All-Numbers-in-a-Range"><a href="#Sum-All-Numbers-in-a-Range" class="headerlink" title="Sum All Numbers in a Range"></a>Sum All Numbers in a Range</h2><p>我们会传递给你一个包含两个数字的数组。返回这两个数字和它们之间所有数字的和。</p>
 <p>下面的方法使用 apply 方法寻找一个数值数组中的最大元素。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMaxOfArray</span>(<span class="params">numArray</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numArray);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>或者通过使用最新的扩展语句<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank">spread operator</a>，获得数组中的最大值变得更容易。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> max = <span class="built_in">Math</span>.max(...arr);</div></pre></td></tr></table></figure></p>
@@ -75,106 +154,393 @@
 <p>二进制字符串是以空格分隔的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">binaryAgent</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    biString = str.split(<span class="string">' '</span>);</div><div class="line">    <span class="keyword">var</span> uniString = [];</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; biString.length; i++) &#123;</div><div class="line">        uniString.push(<span class="built_in">String</span>.fromCharCode(<span class="built_in">parseInt</span>(biString[i], <span class="number">2</span>)));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> uniString.join(<span class="string">""</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="Everything-Be-True"><a href="#Everything-Be-True" class="headerlink" title="Everything Be True"></a>Everything Be True</h2><p>完善编辑器中的every函数，如果集合(collection)中的所有对象都存在对应的属性(pre)，并且属性(pre)对应的值为真。函数返回ture。反之，返回false。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">every</span>(<span class="params">collection, pre</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> collection.every(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> item.hasOwnProperty(pre) &amp;&amp; <span class="built_in">Boolean</span>(item[pre]);</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="Arguments-Optional"><a href="#Arguments-Optional" class="headerlink" title="Arguments Optional"></a>Arguments Optional</h2><p>创建一个计算两个参数之和的 function。如果只有一个参数，则返回一个 function，该 function 请求一个参数然后返回求和的结果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//检查参数是否为有效数字</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">checkNum</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> num != <span class="string">"number"</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>; &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> num; &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//一个参数情况</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">var</span> a = checkNum(<span class="built_in">arguments</span>[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">if</span> (a) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (checkNum(arg)) &#123;</div><div class="line">                    <span class="keyword">return</span> a + arg; &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">undefined</span>; &#125;</div><div class="line">            &#125;;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>; &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//其他情况</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">arguments</span>.length &gt; <span class="number">1</span>) &#123;</div><div class="line">        <span class="keyword">var</span> b = checkNum(<span class="built_in">arguments</span>[<span class="number">0</span>]);</div><div class="line">        <span class="keyword">var</span> c = checkNum(<span class="built_in">arguments</span>[<span class="number">1</span>]);</div><div class="line">        <span class="keyword">if</span> (b &amp;&amp; c) &#123;</div><div class="line">            <span class="keyword">return</span> b + c; &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">undefined</span>; &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://www.freecodecamp.cn/&quot; target=&quot;_blank&quot;&gt;freeCodeCamp&lt;/a&gt;中级算法题整理解析。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://yinfengblog.com/categories/JavaScript/"/>
-    
-    
-      <category term="算法" scheme="http://yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="API" scheme="http://yinfengblog.com/tags/API/"/>
-    
-  </entry>
   
-  <entry>
-    <title>FCC初级算法题整理</title>
-    <link href="http://yinfengblog.com/JavaScript/2017/01/19/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86.html"/>
-    <id>http://yinfengblog.com/JavaScript/2017/01/19/FCC初级算法题整理.html</id>
-    <published>2017-01-19T08:06:37.000Z</published>
-    <updated>2017-01-20T05:17:23.961Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>前端部分快完成了。来整理一下<a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。<br><a id="more"></a><br>这些是初学时做的题，毕竟当时写的代码太蠢<em>(:з)∠)</em>，有些改成了更好的写法。</p>
-<h2 id="Reverse-a-String-翻转字符串"><a href="#Reverse-a-String-翻转字符串" class="headerlink" title="Reverse a String(翻转字符串)"></a>Reverse a String(翻转字符串)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Factorialize-a-Number-阶乘"><a href="#Factorialize-a-Number-阶乘" class="headerlink" title="Factorialize a Number(阶乘)"></a>Factorialize a Number(阶乘)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">factorialize</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num === <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>; &#125;</div><div class="line">    <span class="keyword">return</span> num * factorialize(num - <span class="number">1</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Check-for-Palindromes-回文检测"><a href="#Check-for-Palindromes-回文检测" class="headerlink" title="Check for Palindromes(回文检测)"></a>Check for Palindromes(回文检测)</h2><p>  如果一个字符串忽略标点符号、大小写和空格，正着读和反着读一模一样，那么这个字符串就是palindrome(回文)。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">palindrome</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> originStr = str.replace(<span class="regexp">/[\W_]/g</span>, <span class="string">""</span>).toLowerCase(); <span class="comment">//  /[\W_]/g匹配所有的字母、数字以外的字符</span></div><div class="line">    <span class="keyword">var</span> newStr = originStr.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">    <span class="keyword">return</span> newStr === originStr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Find-the-Longest-Word-in-a-String"><a href="#Find-the-Longest-Word-in-a-String" class="headerlink" title="Find the Longest Word in a String"></a>Find the Longest Word in a String</h2><p>  找到提供的句子中最长的单词，并计算它的长度。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">findLongestWord</span>(<span class="params">s</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> s.split(<span class="string">' '</span>)</div><div class="line">        .reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">Math</span>.max(x, y.length);</div><div class="line">        &#125;, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Title-Case-a-Sentence-Incomplete"><a href="#Title-Case-a-Sentence-Incomplete" class="headerlink" title="Title Case a Sentence Incomplete   "></a>Title Case a Sentence Incomplete   </h2><p>  确保字符串的每个单词首字母都大写，其余部分小写。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">titleCase</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.toLowerCase().replace(<span class="regexp">/( |^)[a-z]/g</span>, (L) =&gt; L.toUpperCase());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Truncate-a-String"><a href="#Truncate-a-String" class="headerlink" title="Truncate a String"></a>Truncate a String</h2><p>  如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。插入到字符串尾部的三个点号也会计入字符串的长度。但是果指<br>定的参数num小于或等于3，则添加的三个点号不会计入字符串的长度。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">truncate</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">3</span> &amp;&amp; str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num) + <span class="string">"..."</span>; &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num - <span class="number">3</span>) + <span class="string">"..."</span>; &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Mutations"><a href="#Mutations" class="headerlink" title="Mutations"></a>Mutations</h2><p>  如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">truncate</span>(<span class="params">str, num</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">3</span> &amp;&amp; str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num) + <span class="string">"..."</span>; &#125; </div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (str.length &gt; num) &#123; str = str.slice(<span class="number">0</span>, num - <span class="number">3</span>) + <span class="string">"..."</span>; &#125;</div><div class="line">    <span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Seek-and-Destroy"><a href="#Seek-and-Destroy" class="headerlink" title="Seek and Destroy"></a>Seek and Destroy</h2><p>  实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">destroyer</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> arg = <span class="built_in">arguments</span>;</div><div class="line">    <span class="keyword">return</span> arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>, len=arr.length; i &lt; len; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (item == arg[i]) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Where-do-I-belong"><a href="#Where-do-I-belong" class="headerlink" title="Where do I belong"></a>Where do I belong</h2><p>  先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。<br>  where([20,3,5], 19) 应该返回2。因为数组会先排序为[3,5,20]，19插入到数组[3,5,20]后变成[3,5,19,20]，而19对应的索引值就是2<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">where</span>(<span class="params">arr, num</span>) </span>&#123;</div><div class="line">    arr.push(num);</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> value1 - value2;</div><div class="line">    &#125;</div><div class="line">    arr.sort(compare);</div><div class="line">    <span class="keyword">return</span> arr.indexOf(num);    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="Caesars-Cipher"><a href="#Caesars-Cipher" class="headerlink" title="Caesars Cipher"></a>Caesars Cipher</h2><p>  下面我们来介绍风靡全球的凯撒密码Caesar cipher，又叫移位密码。移位密码也就是密码中的字母会按照指定的数量来做移位。<br>  一个常见的案例就是ROT13密码，字母会移位13个位置。由’A’ ↔ ‘N’, ‘B’ ↔ ‘O’，以此类推。<br>  写一个ROT13函数，实现输入加密字符串，输出解密字符串。<br>所有的字母都是大写，不要转化任何非字母形式的字符(例如：空格，标点符号)，遇到这些特殊字符，跳过它们。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">rot13</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>)</div><div class="line">        .map(<span class="function"><span class="keyword">function</span>(<span class="params">char</span>) </span>&#123;</div><div class="line">            x = char.charCodeAt(<span class="number">0</span>);</div><div class="line">            <span class="keyword">if</span> (x &lt; <span class="number">65</span> || x &gt; <span class="number">90</span>) &#123; </div><div class="line">                <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x);  <span class="comment">//非大写字母</span></div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &lt; <span class="number">78</span>) &#123; </div><div class="line">                <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x + <span class="number">13</span>);  <span class="comment">//前13个大写字母右移13位</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="built_in">String</span>.fromCharCode(x - <span class="number">13</span>);  <span class="comment">//后13个大写字母左移13位</span></div><div class="line">        &#125;).join(<span class="string">''</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://www.freecodecamp.cn/&quot; target=&quot;_blank&quot;&gt;freeCodeCamp&lt;/a&gt;前端部分快完成了。来整理一下&lt;a href=&quot;https://www.freecodecamp.cn/&quot; target=&quot;_blank&quot;&gt;freeCodeCamp&lt;/a&gt;的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://yinfengblog.com/categories/JavaScript/"/>
-    
-    
-      <category term="算法" scheme="http://yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="API" scheme="http://yinfengblog.com/tags/API/"/>
-    
-  </entry>
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+</div>
+
+
+  <div class="article-tags">
   
-  <entry>
-    <title>基于Github Pages+Hexo的个人博客</title>
-    <link href="http://yinfengblog.com/blog/2017/01/11/%E5%9F%BA%E4%BA%8EGithub%20Pages+Hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2.html"/>
-    <id>http://yinfengblog.com/blog/2017/01/11/基于Github Pages+Hexo的个人博客.html</id>
-    <published>2017-01-11T05:45:16.000Z</published>
-    <updated>2017-01-23T05:26:10.179Z</updated>
-    
-    <content type="html"><![CDATA[<p>折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。<br><a id="more"></a><br>  博客会记录自己对一些前端重要知识的思考，在FCC练习的总结和自己平时练手的项目。像我这种懒人就不会在博客美化UI和丰富功能上花太多精力了<em>(:з)∠)</em></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://yinfengblog.com/categories/blog/"/>
-    
-    
-  </entry>
+  <span></span> <a href="/tags/算法/">算法</a><a href="/tags/API/">API</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yinfengblog.com/JavaScript/2017/01/23/FCC中级算法题整理.html" data-title="FCC中级算法题整理 | 和光同尘" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/JavaScript/2017/01/19/FCC初级算法题整理.html"  title="FCC初级算法题整理">
+ <strong>下一篇：</strong><br/> 
+ <span>FCC初级算法题整理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="JavaScript/2017/01/23/FCC中级算法题整理.html" data-title="FCC中级算法题整理" data-url="http://yinfengblog.com/JavaScript/2017/01/23/FCC中级算法题整理.html"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Numbers-in-a-Range"><span class="toc-number">1.</span> <span class="toc-text">Sum All Numbers in a Range</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Diff-Two-Arrays"><span class="toc-number">2.</span> <span class="toc-text">Diff Two Arrays</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Roman-Numeral-Converter"><span class="toc-number">3.</span> <span class="toc-text">Roman Numeral Converter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-art-thou"><span class="toc-number">4.</span> <span class="toc-text">Where art thou</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-and-Replace"><span class="toc-number">5.</span> <span class="toc-text">Search and Replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pig-Latin"><span class="toc-number">6.</span> <span class="toc-text">Pig Latin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNA-Pairing"><span class="toc-number">7.</span> <span class="toc-text">DNA Pairing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Missing-letters"><span class="toc-number">8.</span> <span class="toc-text">Missing letters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boo-who"><span class="toc-number">9.</span> <span class="toc-text">Boo who</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorted-Union"><span class="toc-number">10.</span> <span class="toc-text">Sorted Union</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convert-HTML-Entities"><span class="toc-number">11.</span> <span class="toc-text">Convert HTML Entities</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spinal-Tap-Case"><span class="toc-number">12.</span> <span class="toc-text">Spinal Tap Case</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Odd-Fibonacci-Numbers"><span class="toc-number">13.</span> <span class="toc-text">Sum All Odd Fibonacci Numbers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sum-All-Primes"><span class="toc-number">14.</span> <span class="toc-text">Sum All Primes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Smallest-Common-Multiple"><span class="toc-number">15.</span> <span class="toc-text">Smallest Common Multiple</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Finders-Keepers"><span class="toc-number">16.</span> <span class="toc-text">Finders Keepers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Drop-it"><span class="toc-number">17.</span> <span class="toc-text">Drop it</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steamroller"><span class="toc-number">18.</span> <span class="toc-text">Steamroller</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-Agents"><span class="toc-number">19.</span> <span class="toc-text">Binary Agents</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Everything-Be-True"><span class="toc-number">20.</span> <span class="toc-text">Everything Be True</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Arguments-Optional"><span class="toc-number">21.</span> <span class="toc-text">Arguments Optional</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
   
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yinfengblog.com/blog/2017/01/10/hello-world.html"/>
-    <id>http://yinfengblog.com/blog/2017/01/10/hello-world.html</id>
-    <published>2017-01-10T14:15:40.000Z</published>
-    <updated>2017-01-19T12:51:48.113Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post.<br><a id="more"></a><br>Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post.&lt;br&gt;
-    
-    </summary>
-    
-      <category term="blog" scheme="http://yinfengblog.com/categories/blog/"/>
-    
-    
-  </entry>
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="accelerator-feng" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
   
-</feed>
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/blog/" title="blog">blog<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/API/" style="font-size: 10px;">API</a> <a href="/tags/算法/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://www.freecodecamp.cn/accelerator-feng" target="_blank" title="freeCodeCamp">freeCodeCamp</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ife.baidu.com/2016/task/all" target="_blank" title="百度IFE">百度IFE</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 未来的前端攻城狮 <br/>
+			Stay hungry. Stay foolish.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/accelerator-feng" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/yin-feng-56-5/activities" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:619772719@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Yin Feng">Yin Feng</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"yinfengblog"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?139cfd4f9fd4b7101ef49a9a6246a98b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
+
+<a href="https://github.com/accelerator-feng"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
