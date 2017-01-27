@@ -4,9 +4,9 @@
   <subtitle>前端小白的学习笔记</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yinfengblog.com/"/>
+  <link href="http://www.yinfengblog.com/"/>
   <updated>2017-01-26T08:50:19.756Z</updated>
-  <id>http://yinfengblog.com/</id>
+  <id>http://www.yinfengblog.com/</id>
   
   <author>
     <name>Yin Feng</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>不会输的井字棋</title>
-    <link href="http://yinfengblog.com/%E4%B8%8D%E4%BC%9A%E8%BE%93%E7%9A%84%E4%BA%95%E5%AD%97%E6%A3%8B/"/>
-    <id>http://yinfengblog.com/不会输的井字棋/</id>
+    <link href="http://www.yinfengblog.com/%E4%B8%8D%E4%BC%9A%E8%BE%93%E7%9A%84%E4%BA%95%E5%AD%97%E6%A3%8B/"/>
+    <id>http://www.yinfengblog.com/不会输的井字棋/</id>
     <published>2017-01-26T06:56:53.000Z</published>
     <updated>2017-01-26T08:50:19.756Z</updated>
     
@@ -51,17 +51,17 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yinfengblog.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
     
     
-      <category term="demo" scheme="http://yinfengblog.com/tags/demo/"/>
+      <category term="demo" scheme="http://www.yinfengblog.com/tags/demo/"/>
     
   </entry>
   
   <entry>
     <title>FCC中级算法题整理</title>
-    <link href="http://yinfengblog.com/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
-    <id>http://yinfengblog.com/FCC中级算法题整理/</id>
+    <link href="http://www.yinfengblog.com/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <id>http://www.yinfengblog.com/FCC中级算法题整理/</id>
     <published>2017-01-23T05:33:21.000Z</published>
     <updated>2017-01-26T06:52:20.866Z</updated>
     
@@ -138,19 +138,19 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yinfengblog.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
     
     
-      <category term="算法" scheme="http://yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="API" scheme="http://yinfengblog.com/tags/API/"/>
+      <category term="API" scheme="http://www.yinfengblog.com/tags/API/"/>
     
   </entry>
   
   <entry>
     <title>FCC初级算法题整理</title>
-    <link href="http://yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
-    <id>http://yinfengblog.com/FCC初级算法题整理/</id>
+    <link href="http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
+    <id>http://www.yinfengblog.com/FCC初级算法题整理/</id>
     <published>2017-01-19T08:06:37.000Z</published>
     <updated>2017-01-26T06:58:06.598Z</updated>
     
@@ -173,19 +173,19 @@
     
     </summary>
     
-      <category term="JavaScript" scheme="http://yinfengblog.com/categories/JavaScript/"/>
+      <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
     
     
-      <category term="算法" scheme="http://yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://www.yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="API" scheme="http://yinfengblog.com/tags/API/"/>
+      <category term="API" scheme="http://www.yinfengblog.com/tags/API/"/>
     
   </entry>
   
   <entry>
     <title>基于Github Pages+Hexo的个人博客</title>
-    <link href="http://yinfengblog.com/%E5%9F%BA%E4%BA%8EGithub%20Pages+Hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yinfengblog.com/基于Github Pages+Hexo的个人博客/</id>
+    <link href="http://www.yinfengblog.com/%E5%9F%BA%E4%BA%8EGithub%20Pages+Hexo%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://www.yinfengblog.com/基于Github Pages+Hexo的个人博客/</id>
     <published>2017-01-11T05:45:16.000Z</published>
     <updated>2017-01-23T05:26:10.179Z</updated>
     
@@ -198,15 +198,15 @@
     
     </summary>
     
-      <category term="blog" scheme="http://yinfengblog.com/categories/blog/"/>
+      <category term="blog" scheme="http://www.yinfengblog.com/categories/blog/"/>
     
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yinfengblog.com/hello-world/"/>
-    <id>http://yinfengblog.com/hello-world/</id>
+    <link href="http://www.yinfengblog.com/hello-world/"/>
+    <id>http://www.yinfengblog.com/hello-world/</id>
     <published>2017-01-10T14:15:40.000Z</published>
     <updated>2017-01-26T06:58:24.523Z</updated>
     
@@ -227,7 +227,7 @@
     
     </summary>
     
-      <category term="blog" scheme="http://yinfengblog.com/categories/blog/"/>
+      <category term="blog" scheme="http://www.yinfengblog.com/categories/blog/"/>
     
     
   </entry>
