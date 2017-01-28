@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-28T06:19:24.860Z</updated>
+  <updated>2017-01-28T06:31:39.540Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-28T06:19:24.860Z</updated>
+    <updated>2017-01-28T06:31:39.540Z</updated>
     
-    <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。<br><a id="more"></a> </p>
+    <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理。<br><a id="more"></a> </p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
 <h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
 <h2 id="顶层对象的属性"><a href="#顶层对象的属性" class="headerlink" title="顶层对象的属性"></a>顶层对象的属性</h2><p>ES6规定，var命令和function命令声明的全局变量，依旧是顶层对象的属性；let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="comment">// 如果在Node的REPL环境，可以写成global.a</span></div><div class="line"><span class="comment">// 或者采用通用方法，写成this.a</span></div><div class="line"><span class="built_in">window</span>.a <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line"><span class="built_in">window</span>.b <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
@@ -45,13 +45,12 @@
 </li>
 </ul>
 <p>上面代码表示，使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
-<h3 id="padStart-padEnd"><a href="#padStart-padEnd" class="headerlink" title="padStart(),padEnd()"></a>padStart(),padEnd()</h3><p>padStart的常见用途是为数值补全指定位数。下面代码生成10位的数值字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'1'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000001"</span></div><div class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000012"</span></div><div class="line"><span class="string">'123456'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000123456"</span></div></pre></td></tr></table></figure></p>
-<p>另一个用途是提示字符串格式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-MM-12"</span></div><div class="line"><span class="string">'09-12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-09-12"</span></div></pre></td></tr></table></figure></p>
-]]></content>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">### padStart(),padEnd()</div><div class="line">padStart的常见用途是为数值补全指定位数。</div><div class="line">另一个用途是提示字符串格式。</div><div class="line">```javascript</div><div class="line">&apos;12&apos;.padStart(10, &apos;YYYY-MM-DD&apos;) // &quot;YYYY-MM-12&quot;</div><div class="line">&apos;09-12&apos;.padStart(10, &apos;YYYY-MM-DD&apos;) // &quot;YYYY-09-12&quot;</div></pre></td></tr></table></figure>
+<h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。&lt;br&gt;
+      &lt;p&gt;最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理。&lt;br&gt;
     
     </summary>
     
