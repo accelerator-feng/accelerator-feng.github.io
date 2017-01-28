@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-28T12:31:20.477Z</updated>
+  <updated>2017-01-28T12:50:55.564Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ES6学习笔记</title>
+    <title>ES6学习笔记0</title>
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-28T12:31:20.477Z</updated>
+    <updated>2017-01-28T12:50:55.564Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据<em>自己的学习情况</em>进行了整理。<br><a id="more"></a> </p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
@@ -70,6 +70,7 @@
 <h2 id="函数的扩展"><a href="#函数的扩展" class="headerlink" title="函数的扩展"></a>函数的扩展</h2><h3 id="函数参数的默认值"><a href="#函数参数的默认值" class="headerlink" title="函数参数的默认值"></a>函数参数的默认值</h3><p>如果参数默认值是变量，那么参数就不是传值的，而是每次都重新计算默认值表达式的值。也就是说，参数默认值是惰性求值的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url, &#123; body = <span class="string">''</span>, method = <span class="string">'GET'</span>, headers = &#123;&#125; &#125;</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(method);</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetch(<span class="string">'http://example.com'</span>, &#123;&#125;)</div><div class="line"><span class="comment">// "GET"</span></div><div class="line"></div><div class="line">fetch(<span class="string">'http://example.com'</span>)</div><div class="line"><span class="comment">// 报错</span></div></pre></td></tr></table></figure></p>
 <p>上面代码中，如果函数fetch的第二个参数是一个对象，就可以为它的三个属性设置默认值。</p>
 <p>上面的写法不能省略第二个参数，如果结合函数参数的默认值，就可以省略第二个参数。这时，就出现了双重默认值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span>(<span class="params">url, &#123; method = <span class="string">'GET'</span> &#125; = &#123;&#125;</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(method);</div><div class="line">&#125;</div><div class="line"></div><div class="line">fetch(<span class="string">'http://example.com'</span>)</div><div class="line"><span class="comment">// "GET"</span></div></pre></td></tr></table></figure></p>
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><p>一旦设置了参数的默认值，函数进行声明初始化时，参数会形成一个单独的作用域（context）。等到初始化结束，这个作用域就会消失。这种语法行为，在不设置参数默认值时，是不会出现的。</p>
 ]]></content>
     
     <summary type="html">
