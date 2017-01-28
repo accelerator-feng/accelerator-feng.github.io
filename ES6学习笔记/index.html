@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>基于Github Pages+Hexo的个人博客 | 和光同尘</title>
+    <title>ES6学习笔记 | 和光同尘</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yin Feng">
     
 
     
-    <meta name="description" content="折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。">
+    <meta name="description" content="最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Github Pages+Hexo的个人博客">
-<meta property="og:url" content="http://www.yinfengblog.com/基于Github Pages+Hexo的个人博客/index.html">
+<meta property="og:title" content="ES6学习笔记">
+<meta property="og:url" content="http://www.yinfengblog.com/ES6学习笔记/index.html">
 <meta property="og:site_name" content="和光同尘">
-<meta property="og:description" content="折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。">
-<meta property="og:updated_time" content="2017-01-23T05:26:10.179Z">
+<meta property="og:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。">
+<meta property="og:updated_time" content="2017-01-28T05:56:23.032Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Github Pages+Hexo的个人博客">
-<meta name="twitter:description" content="折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。">
+<meta name="twitter:title" content="ES6学习笔记">
+<meta name="twitter:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。">
 
     
     <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
@@ -93,14 +93,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/基于Github Pages+Hexo的个人博客/" title="基于Github Pages+Hexo的个人博客" itemprop="url">基于Github Pages+Hexo的个人博客</a>
+      <a href="/ES6学习笔记/" title="ES6学习笔记" itemprop="url">ES6学习笔记</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yin Feng" target="_blank" itemprop="author">Yin Feng</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-11T05:45:16.000Z" itemprop="datePublished"> 发表于 2017-01-11</time>
+    <time datetime="2017-01-28T05:27:55.000Z" itemprop="datePublished"> 发表于 2017-01-28</time>
     
   </p>
 </header>
@@ -109,11 +109,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#let命令"><span class="toc-number">1.</span> <span class="toc-text">let命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级作用域"><span class="toc-number">2.</span> <span class="toc-text">块级作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顶层对象的属性"><span class="toc-number">3.</span> <span class="toc-text">顶层对象的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的解构赋值"><span class="toc-number">4.</span> <span class="toc-text">变量的解构赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的扩展"><span class="toc-number">5.</span> <span class="toc-text">字符串的扩展</span></a></li></ol>
 		
 		</div>
 		
-		<p>折腾了一天，搭建了一个简陋的博客，用来记录自己在学习前端过程中的思考总结。<br><a id="more"></a><br>  博客会记录自己对一些前端重要知识的思考，在FCC练习的总结和自己平时练手的项目。像我这种懒人就不会在博客美化UI和丰富功能上花太多精力了<em>(:з)∠)</em></p>
+		<p>最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。<br><a id="more"></a> </p>
+<h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
+<h2 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h2><p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</p>
+<h2 id="顶层对象的属性"><a href="#顶层对象的属性" class="headerlink" title="顶层对象的属性"></a>顶层对象的属性</h2><p>ES6规定，var命令和function命令声明的全局变量，依旧是顶层对象的属性；let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="comment">// 如果在Node的REPL环境，可以写成global.a</span></div><div class="line"><span class="comment">// 或者采用通用方法，写成this.a</span></div><div class="line"><span class="built_in">window</span>.a <span class="comment">// 1</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> b = <span class="number">1</span>;</div><div class="line"><span class="built_in">window</span>.b <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
+<li><p>交换变量的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> x = <span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> y = <span class="number">2</span>;</div><div class="line"></div><div class="line">[x, y] = [y, x];</div></pre></td></tr></table></figure>
+</li>
+<li><p>从函数返回多个值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 返回一个数组</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> [a, b, c] = example();</div><div class="line"></div><div class="line"><span class="comment">// 返回一个对象</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">example</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">foo</span>: <span class="number">1</span>,</div><div class="line">    <span class="attr">bar</span>: <span class="number">2</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123; foo, bar &#125; = example();</div></pre></td></tr></table></figure>
+</li>
+<li><p>提取JSON数据</p>
+</li>
+</ol>
+<ol>
+<li><p>遍历Map结构（还未学）</p>
+</li>
+<li><p>输入模块的指定方法（还未学）</p>
+</li>
+</ol>
+<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h2><ul>
+<li>includes()：返回布尔值，表示是否找到了参数字符串。</li>
+<li>startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。</li>
+<li>endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。<br>这三个方法都支持第二个参数，表示开始搜索的位置。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>上面代码表示，使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,9 +147,14 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/blog/">blog</a>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/ES6/">ES6</a>
+  </div>
 
 </div>
 
@@ -131,7 +162,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.yinfengblog.com/基于Github Pages+Hexo的个人博客/" data-title="基于Github Pages+Hexo的个人博客 | 和光同尘" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.yinfengblog.com/ES6学习笔记/" data-title="ES6学习笔记 | 和光同尘" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -144,19 +175,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/FCC初级算法题整理/" title="FCC初级算法题整理">
-  <strong>上一篇：</strong><br/>
-  <span>
-  FCC初级算法题整理</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/hello-world/"  title="Hello World">
+<a href="/不会输的井字棋/"  title="不会输的井字棋">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>不会输的井字棋
 </span>
 </a>
 </div>
@@ -165,7 +188,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="基于Github Pages+Hexo的个人博客/" data-title="基于Github Pages+Hexo的个人博客" data-url="http://www.yinfengblog.com/基于Github Pages+Hexo的个人博客/"></div>
+	<div class="ds-thread" data-thread-key="ES6学习笔记/" data-title="ES6学习笔记" data-url="http://www.yinfengblog.com/ES6学习笔记/"></div>
 </section>
 
 
@@ -175,7 +198,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#let命令"><span class="toc-number">1.</span> <span class="toc-text">let命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#块级作用域"><span class="toc-number">2.</span> <span class="toc-text">块级作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顶层对象的属性"><span class="toc-number">3.</span> <span class="toc-text">顶层对象的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的解构赋值"><span class="toc-number">4.</span> <span class="toc-text">变量的解构赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串的扩展"><span class="toc-number">5.</span> <span class="toc-text">字符串的扩展</span></a></li></ol>
  
   </div>
 
