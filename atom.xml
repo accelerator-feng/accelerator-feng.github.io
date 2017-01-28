@@ -127,7 +127,7 @@
     <link href="http://www.yinfengblog.com/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>http://www.yinfengblog.com/FCC中级算法题整理/</id>
     <published>2017-01-23T05:33:21.000Z</published>
-    <updated>2017-01-26T06:52:20.866Z</updated>
+    <updated>2017-01-28T11:14:35.056Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>中级算法题整理解析。<br><a id="more"></a> </p>
 <h2 id="Sum-All-Numbers-in-a-Range"><a href="#Sum-All-Numbers-in-a-Range" class="headerlink" title="Sum All Numbers in a Range"></a>Sum All Numbers in a Range</h2><p>我们会传递给你一个包含两个数字的数组。返回这两个数字和它们之间所有数字的和。</p>
@@ -207,8 +207,6 @@
     
       <category term="算法" scheme="http://www.yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="API" scheme="http://www.yinfengblog.com/tags/API/"/>
-    
   </entry>
   
   <entry>
@@ -216,7 +214,7 @@
     <link href="http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/"/>
     <id>http://www.yinfengblog.com/FCC初级算法题整理/</id>
     <published>2017-01-19T08:06:37.000Z</published>
-    <updated>2017-01-26T06:58:06.598Z</updated>
+    <updated>2017-01-28T11:14:41.282Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>前端部分快完成了。来整理一下<a href="https://www.freecodecamp.cn/" target="_blank">freeCodeCamp</a>的算法题。这些题都相对简单，用来熟悉API的使用。这篇文章选了部分初级算法题进行整理。<br><a id="more"></a><br>这些是初学时做的题，毕竟当时写的代码太蠢<em>(:з)∠)</em>，有些改成了更好的写法。</p>
 <h2 id="Reverse-a-String-翻转字符串"><a href="#Reverse-a-String-翻转字符串" class="headerlink" title="Reverse a String(翻转字符串)"></a>Reverse a String(翻转字符串)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">function</span> <span class="title">reverseString</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> str.split(<span class="string">""</span>).reverse().join(<span class="string">""</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -241,8 +239,6 @@
     
     
       <category term="算法" scheme="http://www.yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="API" scheme="http://www.yinfengblog.com/tags/API/"/>
     
   </entry>
   
