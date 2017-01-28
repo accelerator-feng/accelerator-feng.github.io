@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-28T05:58:17.175Z</updated>
+  <updated>2017-01-28T06:19:24.860Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-28T05:58:17.175Z</updated>
+    <updated>2017-01-28T06:19:24.860Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，整理一下自己觉得重要的和容易忽略的地方。<br><a id="more"></a> </p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
@@ -38,13 +38,15 @@
 <li>遍历Map结构（还未学）</li>
 <li>输入模块的指定方法（还未学）</li>
 </ol>
-<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h2><ul>
+<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h2><h3 id="includes-startsWith-endsWith"><a href="#includes-startsWith-endsWith" class="headerlink" title="includes(),startsWith(),endsWith()"></a>includes(),startsWith(),endsWith()</h3><ul>
 <li>includes()：返回布尔值，表示是否找到了参数字符串。</li>
 <li>startsWith()：返回布尔值，表示参数字符串是否在源字符串的头部。</li>
 <li>endsWith()：返回布尔值，表示参数字符串是否在源字符串的尾部。<br>这三个方法都支持第二个参数，表示开始搜索的位置。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> s = <span class="string">'Hello world!'</span>;</div><div class="line"></div><div class="line">s.startsWith(<span class="string">'world'</span>, <span class="number">6</span>) <span class="comment">// true</span></div><div class="line">s.endsWith(<span class="string">'Hello'</span>, <span class="number">5</span>) <span class="comment">// true</span></div><div class="line">s.includes(<span class="string">'Hello'</span>, <span class="number">6</span>) <span class="comment">// false</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>上面代码表示，使用第二个参数n时，endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
+<h3 id="padStart-padEnd"><a href="#padStart-padEnd" class="headerlink" title="padStart(),padEnd()"></a>padStart(),padEnd()</h3><p>padStart的常见用途是为数值补全指定位数。下面代码生成10位的数值字符串。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="string">'1'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000001"</span></div><div class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000000012"</span></div><div class="line"><span class="string">'123456'</span>.padStart(<span class="number">10</span>, <span class="string">'0'</span>) <span class="comment">// "0000123456"</span></div></pre></td></tr></table></figure></p>
+<p>另一个用途是提示字符串格式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">'12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-MM-12"</span></div><div class="line"><span class="string">'09-12'</span>.padStart(<span class="number">10</span>, <span class="string">'YYYY-MM-DD'</span>) <span class="comment">// "YYYY-09-12"</span></div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
