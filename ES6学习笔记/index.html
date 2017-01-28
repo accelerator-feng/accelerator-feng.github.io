@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.yinfengblog.com/ES6学习笔记/index.html">
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理。">
-<meta property="og:updated_time" content="2017-01-28T07:22:17.053Z">
+<meta property="og:updated_time" content="2017-01-28T07:27:20.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记">
 <meta name="twitter:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理。">
@@ -136,6 +136,10 @@
 <h3 id="后行断言"><a href="#后行断言" class="headerlink" title="后行断言"></a>后行断言</h3><p>目前，有一个提案，在ES7加入后行断言。V8引擎4.9版已经支持，Chrome浏览器49版打开”experimental JavaScript features“开关（地址栏键入about:flags），就可以使用这项功能。</p>
 <p>“后行断言”正好与”先行断言”相反，x只有在y后面才匹配，必须写成<code>/(?&lt;=y)x/</code>。比如，只匹配美元符号之后的数字，要写成<code>/(?&lt;=\$)\d+/</code>。”后行否定断言“则与”先行否定断言“相反，x只有不在y后面才匹配，必须写成<code>/(?&lt;!y)x/</code>。比如，只匹配不在美元符号后面的数字，要写成<code>/(?&lt;!\$)\d+/</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=\$)\d+/.exec('Benjamin Franklin is on the $100 bill')  // ["100"]</div><div class="line">/(?&lt;!\$)\d+/.exec('it’s is worth about €90')                // ["90"]</div></pre></td></tr></table></figure>
+<p>“后行断言”的组匹配，与正常情况下结果是不一样的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(\d+)(\d+))$/.exec('1053') // ["", "1", "053"]</div><div class="line">/^(\d+)(\d+)$/.exec('1053') // ["1053", "105", "3"]</div></pre></td></tr></table></figure></p>
+<p>上面代码中，需要捕捉两个组匹配。没有”后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是105和3。而”后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是1和053。</p>
+<p>其次，”后行断言”的反斜杠引用，也与通常的顺序相反，必须放在对应的那个括号之前。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(o)d\1)r/.exec('hodor')  // null</div><div class="line">/(?&lt;=\1d(o))r/.exec('hodor')  // ["r", "o"]</div></pre></td></tr></table></figure></p>
+<p>上面代码中，如果后行断言的反斜杠引用（\1）放在括号的后面，就不会得到匹配结果，必须放在前面才可以。</p>
   
 	</div>
 		<footer class="article-footer clearfix">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-28T07:22:17.053Z</updated>
+  <updated>2017-01-28T07:27:20.827Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-28T07:22:17.053Z</updated>
+    <updated>2017-01-28T07:27:20.827Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理。<br><a id="more"></a> </p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
@@ -45,6 +45,10 @@
 <h3 id="后行断言"><a href="#后行断言" class="headerlink" title="后行断言"></a>后行断言</h3><p>目前，有一个提案，在ES7加入后行断言。V8引擎4.9版已经支持，Chrome浏览器49版打开”experimental JavaScript features“开关（地址栏键入about:flags），就可以使用这项功能。</p>
 <p>“后行断言”正好与”先行断言”相反，x只有在y后面才匹配，必须写成<code>/(?&lt;=y)x/</code>。比如，只匹配美元符号之后的数字，要写成<code>/(?&lt;=\$)\d+/</code>。”后行否定断言“则与”先行否定断言“相反，x只有不在y后面才匹配，必须写成<code>/(?&lt;!y)x/</code>。比如，只匹配不在美元符号后面的数字，要写成<code>/(?&lt;!\$)\d+/</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=\$)\d+/.exec('Benjamin Franklin is on the $100 bill')  // ["100"]</div><div class="line">/(?&lt;!\$)\d+/.exec('it’s is worth about €90')                // ["90"]</div></pre></td></tr></table></figure>
+<p>“后行断言”的组匹配，与正常情况下结果是不一样的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(\d+)(\d+))$/.exec('1053') // ["", "1", "053"]</div><div class="line">/^(\d+)(\d+)$/.exec('1053') // ["1053", "105", "3"]</div></pre></td></tr></table></figure></p>
+<p>上面代码中，需要捕捉两个组匹配。没有”后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是105和3。而”后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是1和053。</p>
+<p>其次，”后行断言”的反斜杠引用，也与通常的顺序相反，必须放在对应的那个括号之前。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(o)d\1)r/.exec('hodor')  // null</div><div class="line">/(?&lt;=\1d(o))r/.exec('hodor')  // ["r", "o"]</div></pre></td></tr></table></figure></p>
+<p>上面代码中，如果后行断言的反斜杠引用（\1）放在括号的后面，就不会得到匹配结果，必须放在前面才可以。</p>
 ]]></content>
     
     <summary type="html">
