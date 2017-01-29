@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-28T12:51:27.343Z</updated>
+  <updated>2017-01-29T01:37:26.797Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-28T12:51:27.343Z</updated>
+    <updated>2017-01-29T01:37:26.797Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据<em>自己的学习情况</em>进行了整理。<br><a id="more"></a> </p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>不存在变量提升。在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”。</p>
@@ -49,9 +49,7 @@
 <p>上面代码中，需要捕捉两个组匹配。没有”后行断言”时，第一个括号是贪婪模式，第二个括号只能捕获一个字符，所以结果是105和3。而”后行断言”时，由于执行顺序是从右到左，第二个括号是贪婪模式，第一个括号只能捕获一个字符，所以结果是1和053。</p>
 <p>其次，”后行断言”的反斜杠引用，也与通常的顺序相反，必须放在对应的那个括号之前。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/(?&lt;=(o)d\1)r/.exec('hodor')  // null</div><div class="line">/(?&lt;=\1d(o))r/.exec('hodor')  // ["r", "o"]</div></pre></td></tr></table></figure></p>
 <p>上面代码中，如果后行断言的反斜杠引用（\1）放在括号的后面，就不会得到匹配结果，必须放在前面才可以。</p>
-<h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h2><h3 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h3><p>引入一个这么小的量的目的，在于为浮点数计算，设置一个误差范围。我们知道浮点数计算是不精确的。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span></div><div class="line"><span class="comment">// 0.30000000000000004</span></div><div class="line"></div><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> - <span class="number">0.3</span></div><div class="line"><span class="comment">// 5.551115123125783e-17</span></div><div class="line"></div><div class="line"><span class="number">5.551115123125783e-17</span>.toFixed(<span class="number">20</span>)</div><div class="line"><span class="comment">// '0.00000000000000005551'</span></div></pre></td></tr></table></figure></p>
-<p>但是如果这个误差能够小于Number.EPSILON，我们就可以认为得到了正确结果。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="number">5.551115123125783e-17</span> &lt; <span class="built_in">Number</span>.EPSILON</div><div class="line"><span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p>因此，Number.EPSILON的实质是一个可以接受的误差范围。</p>
+<h2 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h2><h3 id="Number-EPSILON"><a href="#Number-EPSILON" class="headerlink" title="Number.EPSILON"></a>Number.EPSILON</h3><p>引入一个这么小的量的目的，在于为浮点数计算，设置一个误差范围。我们知道浮点数计算是不精确的。<br>因此，Number.EPSILON的实质是一个可以接受的误差范围。</p>
 <h3 id="Math对象的扩展"><a href="#Math对象的扩展" class="headerlink" title="Math对象的扩展"></a>Math对象的扩展</h3><ul>
 <li>Math.trunc方法用于去除一个数的小数部分，返回整数部分。</li>
 <li>Math.sign方法用来判断一个数到底是正数、负数、还是零。</li>
