@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-29T14:47:22.811Z</updated>
+  <updated>2017-01-29T15:24:31.160Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-29T14:47:22.811Z</updated>
+    <updated>2017-01-29T15:24:31.160Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据<em>自己的学习情况</em>进行了整理。<br><a id="more"></a> </p>
 <h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
@@ -84,7 +84,7 @@
 </li>
 </ol>
 <p>由于存在深拷贝的问题，DEFAULTS对象和options对象的所有属性的值，都只能是简单类型，而不能指向另一个对象。否则，将导致DEFAULTS对象的该属性不起作用。</p>
-<h3 id="proto属性，Object-setPrototypeOf-，Object-getPrototypeOf"><a href="#proto属性，Object-setPrototypeOf-，Object-getPrototypeOf" class="headerlink" title="proto属性，Object.setPrototypeOf()，Object.getPrototypeOf()"></a><strong>proto</strong>属性，Object.setPrototypeOf()，Object.getPrototypeOf()</h3>]]></content>
+]]></content>
     
     <summary type="html">
     
