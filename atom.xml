@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-29T07:17:33.507Z</updated>
+  <updated>2017-01-29T14:47:22.811Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-29T07:17:33.507Z</updated>
+    <updated>2017-01-29T14:47:22.811Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据<em>自己的学习情况</em>进行了整理。<br><a id="more"></a> </p>
 <h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
@@ -75,7 +75,16 @@
 <h3 id="尾递归"><a href="#尾递归" class="headerlink" title="尾递归"></a>尾递归</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n, total = <span class="number">1</span></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) <span class="keyword">return</span> total;</div><div class="line">  <span class="keyword">return</span> factorial(n - <span class="number">1</span>, n * total);</div><div class="line">&#125;</div><div class="line"></div><div class="line">factorial(<span class="number">5</span>) <span class="comment">// 120</span></div></pre></td></tr></table></figure>
 <h2 id="对象的扩展"><a href="#对象的扩展" class="headerlink" title="对象的扩展"></a>对象的扩展</h2><h3 id="Object-is"><a href="#Object-is" class="headerlink" title="Object.is()"></a>Object.is()</h3><p><code>Object.is(NaN, NaN) // true</code></p>
 <h3 id="Objects-assign"><a href="#Objects-assign" class="headerlink" title="Objects.assign()"></a>Objects.assign()</h3><p>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）</p>
-]]></content>
+<ol>
+<li><p>合并多个对象<br>将多个对象合并到某个对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> merge =</div><div class="line">  <span class="function">(<span class="params">target, ...sources</span>) =&gt;</span> <span class="built_in">Object</span>.assign(target, ...sources);</div></pre></td></tr></table></figure>
+</li>
+<li><p>为属性指定默认值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> DEFAULTS = &#123;</div><div class="line">  <span class="attr">logLevel</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">outputFormat</span>: <span class="string">'html'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processContent</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  options = <span class="built_in">Object</span>.assign(&#123;&#125;, DEFAULTS, options);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由于存在深拷贝的问题，DEFAULTS对象和options对象的所有属性的值，都只能是简单类型，而不能指向另一个对象。否则，将导致DEFAULTS对象的该属性不起作用。</p>
+<h3 id="proto属性，Object-setPrototypeOf-，Object-getPrototypeOf"><a href="#proto属性，Object-setPrototypeOf-，Object-getPrototypeOf" class="headerlink" title="proto属性，Object.setPrototypeOf()，Object.getPrototypeOf()"></a><strong>proto</strong>属性，Object.setPrototypeOf()，Object.getPrototypeOf()</h3>]]></content>
     
     <summary type="html">
     
