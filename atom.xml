@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-01-30T13:06:10.726Z</updated>
+  <updated>2017-01-30T14:16:46.037Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>http://www.yinfengblog.com/ES6学习笔记/</id>
     <published>2017-01-28T05:27:55.000Z</published>
-    <updated>2017-01-30T13:06:10.726Z</updated>
+    <updated>2017-01-30T14:16:46.037Z</updated>
     
     <content type="html"><![CDATA[<p>最近在学习阮一峰著《ECMAScript 6 入门》，根据<em>自己的学习情况</em>进行了整理，方便查找复习。<br><a id="more"></a> </p>
 <h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
@@ -84,7 +84,22 @@
 </li>
 </ol>
 <p>由于存在深拷贝的问题，DEFAULTS对象和options对象的所有属性的值，都只能是简单类型，而不能指向另一个对象。否则，将导致DEFAULTS对象的该属性不起作用。</p>
-]]></content>
+<h3 id="属性的遍历"><a href="#属性的遍历" class="headerlink" title="属性的遍历"></a>属性的遍历</h3><p>ES6一共有5种方法可以遍历对象的属性。</p>
+<p>（1）for…in</p>
+<p>for…in循环遍历对象自身的和继承的可枚举属性（不含Symbol属性）。</p>
+<p>（2）Object.keys(obj)</p>
+<p>Object.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含Symbol属性）。</p>
+<p>（3）Object.getOwnPropertyNames(obj)</p>
+<p>Object.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含Symbol属性，但是包括不可枚举属性）。</p>
+<p>（4）Object.getOwnPropertySymbols(obj)</p>
+<p>Object.getOwnPropertySymbols返回一个数组，包含对象自身的所有Symbol属性。</p>
+<p>（5）Reflect.ownKeys(obj)</p>
+<p>Reflect.ownKeys返回一个数组，包含对象自身的所有属性，不管是属性名是Symbol或字符串，也不管是否可枚举。</p>
+<p>以上的5种方法遍历对象的属性，都遵守同样的属性遍历的次序规则。</p>
+<pre><code>首先遍历所有属性名为数值的属性，按照数字排序。
+其次遍历所有属性名为字符串的属性，按照生成时间排序。
+最后遍历所有属性名为Symbol值的属性，按照生成时间排序。
+</code></pre>]]></content>
     
     <summary type="html">
     
