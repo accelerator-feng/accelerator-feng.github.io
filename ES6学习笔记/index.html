@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.yinfengblog.com/ES6学习笔记/index.html">
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理，方便查找复习。">
-<meta property="og:updated_time" content="2017-02-03T10:20:01.850Z">
+<meta property="og:updated_time" content="2017-02-03T10:23:20.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记（一）">
 <meta name="twitter:description" content="最近在学习阮一峰著《ECMAScript 6 入门》，根据自己的学习情况进行了整理，方便查找复习。">
@@ -117,7 +117,6 @@
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><p>ES6提出了两个新的声明变量的命令：let和const。其中，let完全可以取代var，因为两者语义相同，而且let没有副作用。</p>
 <h2 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h2><p>在let和const之间，建议优先使用const，尤其是在全局环境，不应该设置变量，只应设置常量。</p>
 <p>const优于let有几个原因。一个是const可以提醒阅读程序的人，这个变量不应该改变；另一个是const比较符合函数式编程思想，运算不改变值，只是新建值，而且这样也有利于将来的分布式运算；最后一个原因是 JavaScript 编译器会对const进行优化，所以多使用const，有利于提供程序的运行效率，也就是说let和const的本质区别，其实是编译器内部的处理不同。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// bad</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">// good</span></div><div class="line"><span class="keyword">const</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">const</span> b = <span class="number">2</span>;</div><div class="line"><span class="keyword">const</span> c = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="comment">// best</span></div><div class="line"><span class="keyword">const</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div></pre></td></tr></table></figure></p>
-<p>const声明常量还有两个好处，一是阅读代码的人立刻会意识到不应该修改这个值，二是防止了无意间修改变量值所导致的错误。</p>
 <p>所有的函数都应该设置为常量。</p>
 <h2 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h2><ol>
 <li>交换变量的值</li>
