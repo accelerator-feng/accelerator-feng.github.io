@@ -121,9 +121,10 @@
     <link href="http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://www.yinfengblog.com/学习前端跨域解决方案/</id>
     <published>2017-01-28T12:21:39.000Z</published>
-    <updated>2017-02-19T12:26:38.001Z</updated>
+    <updated>2017-02-19T12:29:43.201Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
+    <content type="html"><![CDATA[<p>结合自己之前demo的Ajax来学习几种前端跨域方法。<br><a id="more"></a> </p>
+<h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
 <h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><p>JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-document messaging（跨文档消息传递）、Web Sockets、<br>iframe跨域以及服务器代理。<br>这里先总结CORS和JSONP。</p>
 <h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是W3C推荐的一个让Web应用服务器能支持跨域访问控制，从而使得安全地进行跨域数据传输的标准。CORS背后的基本思想，<br>就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。</p>
 <p>使用CORS跨域的时候和普通的AJAX过程是一样的。浏览器一但发现AJAX请求跨域资源，就会自动添加一些请求头帮助我们处理一些事情。所以说只要服务端提供CORS支持，前端不需要做额外的事情。</p>
@@ -170,7 +171,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;跨域问题由来&quot;&gt;&lt;a href=&quot;#跨域问题由来&quot; class=&quot;headerlink&quot; title=&quot;跨域问题由来&quot;&gt;&lt;/a&gt;跨域问题由来&lt;/h1&gt;&lt;p&gt; 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。&lt;br&gt;因此，
+      &lt;p&gt;结合自己之前demo的Ajax来学习几种前端跨域方法。&lt;br&gt;
     
     </summary>
     
