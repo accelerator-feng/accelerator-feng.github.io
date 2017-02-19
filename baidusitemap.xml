@@ -4,34 +4,14 @@
 
     
   <url>
-    <loc>http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-02-03T10:35:11.081Z</lastmod>
+    <loc>http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2017-02-19T12:26:38.001Z</lastmod>
     <data>
         <display>
-        <title>ES6学习笔记（一）</title>
-        <pubTime>2017-01-28T05:27:55.000Z</pubTime>
+        <title>学习前端跨域解决方案</title>
+        <pubTime>2017-01-28T12:21:39.000Z</pubTime>
         
-        <tag>ES6</tag>
-         
-         
-           
-             
-              <breadCrumb title="JavaScript" url="http://www.yinfengblog.com/categories/JavaScript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2017-01-28T11:14:41.282Z</lastmod>
-    <data>
-        <display>
-        <title>FCC初级算法题整理</title>
-        <pubTime>2017-01-19T08:06:37.000Z</pubTime>
-        
-        <tag>算法</tag>
+        <tag>跨域</tag>
          
          
            
@@ -45,13 +25,53 @@
     
   <url>
     <loc>http://www.yinfengblog.com/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2017-01-28T11:14:35.056Z</lastmod>
+    <lastmod>2017-02-19T12:26:19.923Z</lastmod>
     <data>
         <display>
-        <title>FCC中级算法题整理</title>
+        <title>FCC中级编程题整理</title>
         <pubTime>2017-01-23T05:33:21.000Z</pubTime>
         
-        <tag>算法</tag>
+        <tag>编程练习</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://www.yinfengblog.com/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2017-02-19T12:26:17.247Z</lastmod>
+    <data>
+        <display>
+        <title>FCC初级编程题整理</title>
+        <pubTime>2017-01-19T08:06:37.000Z</pubTime>
+        
+        <tag>编程练习</tag>
+         
+         
+           
+             
+              <breadCrumb title="JavaScript" url="http://www.yinfengblog.com/categories/JavaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-02-19T12:24:34.880Z</lastmod>
+    <data>
+        <display>
+        <title>ES6学习笔记（一）</title>
+        <pubTime>2017-02-05T05:27:55.000Z</pubTime>
+        
+        <tag>ES6</tag>
          
          
            

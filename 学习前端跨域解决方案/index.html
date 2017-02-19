@@ -4,23 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | 和光同尘</title>
+    <title>学习前端跨域解决方案 | 和光同尘</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yin Feng">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post.">
+    <meta name="description" content="跨域问题由来 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，要求JavaScript或cookie只能访问同源的资源。这里的同源指的是域名，协议名，以及端口号相同。
+跨域解决方案JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-do">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://www.yinfengblog.com/hello-world/index.html">
+<meta property="og:title" content="学习前端跨域解决方案">
+<meta property="og:url" content="http://www.yinfengblog.com/学习前端跨域解决方案/index.html">
 <meta property="og:site_name" content="和光同尘">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post.">
-<meta property="og:updated_time" content="2017-01-26T06:58:24.523Z">
+<meta property="og:description" content="跨域问题由来 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，要求JavaScript或cookie只能访问同源的资源。这里的同源指的是域名，协议名，以及端口号相同。
+跨域解决方案JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-do">
+<meta property="og:image" content="http://p1.bqimg.com/582196/72d864ff72ede8a3.png">
+<meta property="og:image" content="http://i1.piimg.com/582196/7caa3db0ba1819c4.png">
+<meta property="og:image" content="http://p1.bqimg.com/582196/06e897781a55c7d2.png">
+<meta property="og:image" content="http://i1.piimg.com/582196/a3e7cb96dda319d2.png">
+<meta property="og:image" content="http://i1.piimg.com/582196/42dcbd40a3c28129.png">
+<meta property="og:updated_time" content="2017-02-19T12:26:38.001Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post.">
+<meta name="twitter:title" content="学习前端跨域解决方案">
+<meta name="twitter:description" content="跨域问题由来 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，要求JavaScript或cookie只能访问同源的资源。这里的同源指的是域名，协议名，以及端口号相同。
+跨域解决方案JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-do">
+<meta name="twitter:image" content="http://p1.bqimg.com/582196/72d864ff72ede8a3.png">
 
     
     <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
@@ -93,14 +102,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/学习前端跨域解决方案/" title="学习前端跨域解决方案" itemprop="url">学习前端跨域解决方案</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Yin Feng" target="_blank" itemprop="author">Yin Feng</a>
 		
   <p class="article-time">
-    <time datetime="2017-01-10T14:15:40.000Z" itemprop="datePublished"> 发表于 2017-01-10</time>
+    <time datetime="2017-01-28T12:21:39.000Z" itemprop="datePublished"> 发表于 2017-01-28</time>
     
   </p>
 </header>
@@ -109,19 +118,53 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#跨域问题由来"><span class="toc-number">1.</span> <span class="toc-text">跨域问题由来</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跨域解决方案"><span class="toc-number">2.</span> <span class="toc-text">跨域解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CORS"><span class="toc-number">2.1.</span> <span class="toc-text">CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单请求"><span class="toc-number">2.1.1.</span> <span class="toc-text">简单请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非简单请求"><span class="toc-number">2.1.2.</span> <span class="toc-text">非简单请求</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post.<br><a id="more"></a><br>Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
+<h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><p>JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-document messaging（跨文档消息传递）、Web Sockets、<br>iframe跨域以及服务器代理。<br>这里先总结CORS和JSONP。</p>
+<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是W3C推荐的一个让Web应用服务器能支持跨域访问控制，从而使得安全地进行跨域数据传输的标准。CORS背后的基本思想，<br>就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。</p>
+<p>使用CORS跨域的时候和普通的AJAX过程是一样的。浏览器一但发现AJAX请求跨域资源，就会自动添加一些请求头帮助我们处理一些事情。所以说只要服务端提供CORS支持，前端不需要做额外的事情。</p>
+<p>CORS请求分两种，简单请求和非简单请求。</p>
+<h3 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h3><p>简单请求满足的条件：</p>
+<p>（1） 请求方法是以下三种方法之一：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+<p>（2）HTTP的头信息不超出以下几种字段：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
+</ul>
+<p>（3）不使用自定义请求头</p>
+<p>简单请求与同源时发送的请求差不多，不过在服务器端要明确Access-Control-Allow-Origin字段的值，以使请求的数据顺利返回客户端。</p>
+<p>另外，客户端发现Ajax发送的是跨域请求，会在请求头中自动添加一个Origin字段。</p>
+<p>结合之前自己做的demo，利用维基百科的API查询维基百科条目，请求的数据顺利返回，部分头部信息如下：<br><img src="http://p1.bqimg.com/582196/72d864ff72ede8a3.png"></p>
+<p>Access-Control-Allow-Origin: 该字段为必需字段，可以是指定的源名（协议+域名+端口），也可以使用通配符*代表接受所有跨域资源请求。<br>如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。</p>
+<h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3><p>非简单请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。这种请求使用OPTIONS方法，发送<br>这个请求后，服务器可以决定是否允许这种类型的请求。如果是才真正发送指定方式的请求。</p>
+<p>结合自己的另一个<a href="http://yinfengblog.com/Random-Quote-Machine/" target="_blank" rel="external">demo</a>，部分代码及头部信息如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    <span class="attr">headers</span>: &#123; <span class="string">"X-Mashape-Key"</span>: <span class="string">"MLHtOdrnY5mshXxPTKg6YoqX0LBPp1Ywu3mjsnj8236K9zbKiI"</span> &#125;,</div><div class="line">    <span class="attr">url</span>: <span class="string">'https://andruxnet-random-famous-quotes.p.mashape.com/cat='</span>,</div><div class="line">    <span class="attr">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">response</span>) </span>&#123;</div><div class="line">        <span class="comment">// 请求成功后的处理</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><img src="http://i1.piimg.com/582196/7caa3db0ba1819c4.png"><br><img src="http://p1.bqimg.com/582196/06e897781a55c7d2.png"></p>
+<ul>
+<li><p>Access-Control-Allow-Methods: 指明请求的可用方式有哪些(一个或者多个，不同方法之间用英文逗号隔开)。这个响应头信息作为对客户端发出的预检请求中Access-Control-Request-Method的回复，必含。 </p>
+</li>
+<li><p>Access-Control-Allow-Headers: 在响应预检请求的时候使用。用来指明在实际的请求中，可以使用哪些自定义HTTP请求头，那么在客户端发送请求时就可以加上这些可以使用的自定义请求头。</p>
+</li>
+<li><p>Access-Control-Request-Headers: 在发出预检请求时带有这个头信息，告诉服务器在实际请求时会携带的自定义头信息。如有多个，可以用逗号分开。<br><strong>在这个例子中为x-masshape-key，是在JS代码中指定的自定义的头信息，这里是使用这个公共API的APPKey的名字。</strong></p>
+</li>
+<li><p>Access-Control-Request-Mrthod: 在发出预检请求时带有这个头信息,告诉服务器在实际请求时会使用的请求方式。</p>
+</li>
+<li><p>Origin: 表明发送请求或者预检请求的域，值是一个URI，告诉服务器端,请求来自哪里。它不包含任何路径信息，只是协议 + 域名 + 端口。Origin的值也可以是一个空字符串。<br><strong>在这里与Access-Control-Allow-Origin值一样，为博客地址，可以说预检请求通过了，可以发送实际请求。</strong></p>
+</li>
+</ul>
+<p>Preflight请求结束后，结果将按照响应中指定的时间缓存起来。以后每次浏览器正常的CORS（跨域）请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
+<p>实际请求：<br><img src="http://i1.piimg.com/582196/a3e7cb96dda319d2.png"><br><img src="http://i1.piimg.com/582196/42dcbd40a3c28129.png"></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -129,9 +172,14 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/blog/">blog</a>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
 </div>
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/跨域/">跨域</a>
+  </div>
 
 </div>
 
@@ -139,7 +187,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://www.yinfengblog.com/hello-world/" data-title="Hello World | 和光同尘" data-tsina="null" class="share clearfix">
+	  <div data-url="http://www.yinfengblog.com/学习前端跨域解决方案/" data-title="学习前端跨域解决方案 | 和光同尘" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -153,17 +201,29 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/基于Github Pages+Hexo的个人博客/" title="基于Github Pages+Hexo的个人博客">
+ <a href="/ES6学习笔记/" title="ES6学习笔记（一）">
   <strong>上一篇：</strong><br/>
   <span>
-  基于Github Pages+Hexo的个人博客</span>
+  ES6学习笔记（一）</span>
 </a>
 </div>
 
 
+<div class="next">
+<a href="/不会输的井字棋/"  title="不会输的井字棋">
+ <strong>下一篇：</strong><br/> 
+ <span>不会输的井字棋
+</span>
+</a>
+</div>
+
 </nav>
 
 	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="学习前端跨域解决方案/" data-title="学习前端跨域解决方案" data-url="http://www.yinfengblog.com/学习前端跨域解决方案/"></div>
+</section>
+
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
@@ -171,7 +231,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#跨域问题由来"><span class="toc-number">1.</span> <span class="toc-text">跨域问题由来</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#跨域解决方案"><span class="toc-number">2.</span> <span class="toc-text">跨域解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CORS"><span class="toc-number">2.1.</span> <span class="toc-text">CORS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单请求"><span class="toc-number">2.1.1.</span> <span class="toc-text">简单请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非简单请求"><span class="toc-number">2.1.2.</span> <span class="toc-text">非简单请求</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
@@ -425,6 +485,18 @@ $(document).ready(function(){
 </script>
 
 
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"yinfengblog"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
