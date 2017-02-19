@@ -121,11 +121,12 @@
     <link href="http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://www.yinfengblog.com/学习前端跨域解决方案/</id>
     <published>2017-01-28T12:21:39.000Z</published>
-    <updated>2017-02-19T12:31:31.697Z</updated>
+    <updated>2017-02-19T13:07:38.642Z</updated>
     
     <content type="html"><![CDATA[<p>结合自己之前demo中的Ajax来学习几种前端跨域方法。<br><a id="more"></a> </p>
 <h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
-<h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><p>JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-document messaging（跨文档消息传递）、Web Sockets、<br>iframe跨域以及服务器代理。<br>这里先总结CORS和JSONP。</p>
+<h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><p>JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-document messaging（跨文档消息传递）、Web Sockets、<br>iframe跨域以及服务器代理。</p>
+<p>这里先总结CORS和JSONP。</p>
 <h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是W3C推荐的一个让Web应用服务器能支持跨域访问控制，从而使得安全地进行跨域数据传输的标准。CORS背后的基本思想，<br>就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。</p>
 <p>使用CORS跨域的时候和普通的AJAX过程是一样的。浏览器一但发现AJAX请求跨域资源，就会自动添加一些请求头帮助我们处理一些事情。所以说只要服务端提供CORS支持，前端不需要做额外的事情。</p>
 <p>CORS请求分两种，简单请求和非简单请求。</p>
@@ -167,6 +168,18 @@
 </ul>
 <p>Preflight请求结束后，结果将按照响应中指定的时间缓存起来。以后每次浏览器正常的CORS（跨域）请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。</p>
 <p>实际请求：<br><img src="http://i1.piimg.com/582196/a3e7cb96dda319d2.png"><br><img src="http://i1.piimg.com/582196/42dcbd40a3c28129.png"></p>
+<h1 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h1><p>JSONP是JSON with padding (填充式JSON或参数式JSON)的简写。</p>
+<p>JSONP由两部分组成：回调函数和数据。回调函数的名字一般是在请求中指定的。而数据就是传入回调函数中的JSON数据。</p>
+<p>JSONP 是通过动态<code>&lt;script&gt;</code>元素来使用的，使用时可以为src属性指定一个跨域URL。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>利用百度地图API获取所在城市：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">initialize</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> myCity = <span class="keyword">new</span> BMap.LocalCity();</div><div class="line">    myCity.get(<span class="function"><span class="keyword">function</span>(<span class="params">r</span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> cityname = r.name;</div><div class="line">        getWeather(cityname);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">script.src = <span class="string">'https://api.map.baidu.com/api?v=2.0&amp;ak=kKC3PPnZc3Fq7xlwGyZfkCuYnGBrGuAL&amp;callback=initialize'</span>;</div><div class="line"><span class="built_in">document</span>.body.insertBefore(script, <span class="built_in">document</span>.body.firstChild);</div></pre></td></tr></table></figure>
+<p>JSONP也可以通过jQuery的getJSON()方法实现。下面利用百度地图的数据，获取聚合数据给出的城市天气信息：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getWeather</span>(<span class="params">cityname</span>) </span>&#123;</div><div class="line">    $.getJSON(<span class="string">"https://v.juhe.cn/weather/index?callback=?"</span>, &#123;</div><div class="line">        <span class="string">"cityname"</span>: cityname,</div><div class="line">        <span class="string">"dtype"</span>: <span class="string">"jsonp"</span>,</div><div class="line">        <span class="string">"key"</span>: <span class="string">"12787276c08fd9a6d9c249a6189f59d9"</span></div><div class="line">    &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">       <span class="comment">// 获取需要的天气信息</span></div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><ul>
+<li>它只支持GET请求而不支持POST等其它类型的HTTP请求</li>
+<li>它只支持跨域HTTP请求这种情况，不能解决不同域的两个页面之间如何进行JavaScript调用的问题</li>
+<li>JSONP是从其他域中加载代码执行。如果其他域不安全，很可能会在响应中夹带一些恶意代码</li>
+<li>难以判断JSONP请求是否失败</li>
+</ul>
 ]]></content>
     
     <summary type="html">
