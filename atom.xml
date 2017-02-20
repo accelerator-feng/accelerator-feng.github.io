@@ -117,14 +117,14 @@
   </entry>
   
   <entry>
-    <title>学习前端跨域解决方案</title>
+    <title>学习跨域请求解决方案(CORS、JSONP)</title>
     <link href="http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>http://www.yinfengblog.com/学习前端跨域解决方案/</id>
     <published>2017-02-06T12:21:39.000Z</published>
-    <updated>2017-02-19T13:08:24.423Z</updated>
+    <updated>2017-02-20T01:25:50.274Z</updated>
     
-    <content type="html"><![CDATA[<p>结合自己之前demo中的Ajax来学习几种前端跨域方法。<br><a id="more"></a> </p>
-<h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现Ajax通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
+    <content type="html"><![CDATA[<p>结合自己之前demo中的AJAX来学习几种前端跨域方法。<br><a id="more"></a> </p>
+<h1 id="跨域问题由来"><a href="#跨域问题由来" class="headerlink" title="跨域问题由来"></a>跨域问题由来</h1><p> 前端处于项目开发过程中最接近用户的一个区域，代码最容易被hack获取解析，也最容易受到攻击。<br>因此，通过XHR实现AJAX通信的一个主要限制，来源于同源策略：浏览器限制脚本中发起的跨站请求，<br>要求JavaScript或cookie只能访问同源的资源。<br>这里的同源指的是域名，协议名，以及端口号相同。</p>
 <h1 id="跨域解决方案"><a href="#跨域解决方案" class="headerlink" title="跨域解决方案"></a>跨域解决方案</h1><p>JS里实现跨域的几种方法：CORS（跨域资源共享）、JSONP、cross-document messaging（跨文档消息传递）、Web Sockets、<br>iframe跨域以及服务器代理。</p>
 <p>这里先总结CORS和JSONP。</p>
 <h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS是W3C推荐的一个让Web应用服务器能支持跨域访问控制，从而使得安全地进行跨域数据传输的标准。CORS背后的基本思想，<br>就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功，还是应该失败。</p>
@@ -147,7 +147,7 @@
 </ul>
 <p>（3）不使用自定义请求头</p>
 <p>简单请求与同源时发送的请求差不多，不过在服务器端要明确Access-Control-Allow-Origin字段的值，以使请求的数据顺利返回客户端。</p>
-<p>另外，客户端发现Ajax发送的是跨域请求，会在请求头中自动添加一个Origin字段。</p>
+<p>另外，客户端发现AJAX发送的是跨域请求，会在请求头中自动添加一个Origin字段。</p>
 <p>结合之前自己做的demo，利用维基百科的API查询维基百科条目，请求的数据顺利返回，部分头部信息如下：<br><img src="http://p1.bqimg.com/582196/72d864ff72ede8a3.png"></p>
 <p>Access-Control-Allow-Origin: 该字段为必需字段，可以是指定的源名（协议+域名+端口），也可以使用通配符*代表接受所有跨域资源请求。<br>如果没有这个头部，或者有这个头部但源信息不匹配，浏览器就会驳回请求。</p>
 <h3 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h3><p>非简单请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。这种请求使用OPTIONS方法，发送<br>这个请求后，服务器可以决定是否允许这种类型的请求。如果是才真正发送指定方式的请求。</p>
@@ -184,7 +184,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;结合自己之前demo中的Ajax来学习几种前端跨域方法。&lt;br&gt;
+      &lt;p&gt;结合自己之前demo中的AJAX来学习几种前端跨域方法。&lt;br&gt;
     
     </summary>
     
