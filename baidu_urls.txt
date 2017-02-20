@@ -1,3 +1,3 @@
+http://www.yinfengblog.com/理解词法作用域与闭包/
 http://www.yinfengblog.com/ES6学习笔记/
 http://www.yinfengblog.com/学习前端跨域解决方案/
-http://www.yinfengblog.com/不会输的井字棋/

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-02-19T13:08:33.922Z</updated>
+  <updated>2017-02-20T03:07:49.665Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
+    <id>http://www.yinfengblog.com/理解词法作用域与闭包/</id>
+    <published>2017-02-20T01:31:45.429Z</published>
+    <updated>2017-02-20T03:07:49.665Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: 理解词法作用域与闭包<br>date: 2017-02-15 10:31:45<br>categories: JavaScript</p>
+<h2 id="tags-闭包"><a href="#tags-闭包" class="headerlink" title="tags: 闭包"></a>tags: 闭包</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: 理解词法作用域与闭包&lt;br&gt;date: 2017-02-15 10:31:45&lt;br&gt;categories: JavaScript&lt;/p&gt;
+&lt;h2 id=&quot;tags-闭包&quot;&gt;&lt;a href=&quot;#tags-闭包&quot; class=&quot;headerlink&quot; 
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>ES6学习笔记（一）</title>
