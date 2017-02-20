@@ -1,10 +1,10 @@
 
- <!DOCTYPE HTML>
+  <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   
-    <title>Categories | 和光同尘</title>
+    <title>分类 : JavaScript | 和光同尘</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Yin Feng">
@@ -13,13 +13,12 @@
     
     <meta name="description" content="前端小白的学习笔记">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://www.yinfengblog.com/categories/index.html">
+<meta property="og:title" content="和光同尘">
+<meta property="og:url" content="http://www.yinfengblog.com/categories/JavaScript/page/2/index.html">
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="前端小白的学习笔记">
-<meta property="og:updated_time" content="2017-01-20T02:58:25.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Categories">
+<meta name="twitter:title" content="和光同尘">
 <meta name="twitter:description" content="前端小白的学习笔记">
 
     
@@ -87,19 +86,35 @@
 </div>
       </header>
       <div id="container">
-          
+        
+
 <div class="archive-title" >
-<h2 class="category-icon">分类</h2>
-
-<a data-src="/categories/JavaScript/" href="#JavaScript" title="JavaScript">JavaScript<sup>6</sup></a>
-
-<a data-src="/categories/blog/" href="#blog" title="blog">blog<sup>2</sup></a>
-
+  <h2 class="category-icon">JavaScript</h2>
+  
 </div>
-<div id="main" class="archive-part">
-<div class="all-list-box"></div>
-</div>
+<div id="main" class="archive-part clearfix">
+  <div id="archive-page">
 
+  <section class="post" itemscope itemprop="blogPost">
+  
+    <a href="/FCC初级算法题整理/" title="FCC初级编程题整理" itemprop="url">
+  
+
+    <time datetime="2017-01-19T08:06:37.000Z" itemprop="datePublished">2017-01-19</time>
+
+
+    <h1 itemprop="name">FCC初级编程题整理</h1>
+
+  </a>
+</section>
+
+
+  <nav id="page-nav" class="clearfix archive-nav">
+    <a class="extend prev" rel="prev" href="/categories/JavaScript/"><span></span>Prev</a><a class="page-number" href="/categories/JavaScript/">1</a><span class="page-number current">2</span>
+  </nav>
+
+  </div>
+</div>
 
       </div>
       <footer><div id="footer" >
@@ -198,40 +213,10 @@ $(document).ready(function(){
 
 
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"yinfengblog"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
 
 
 
 
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var list    = $('.archive-title a'),
-      box     = $('.all-list-box'),
-      first   = $('.archive-title a:first-of-type');
-      box.load(first.attr('data-src').toString()+' #archive-page');
-      first.addClass('current');
-  list.each(function(){
-    $(this).click(function(){
-      var listSrc=$(this).attr('data-src').toString()+' #archive-page';
-      box.load(listSrc);
-      list.removeClass('current');
-      $(this).addClass('current');
-     });  
-    });
-  }); 
-</script>
 
 
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">

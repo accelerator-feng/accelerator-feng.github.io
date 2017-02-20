@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-02-20T03:07:49.665Z</updated>
+  <updated>2017-02-19T13:08:33.922Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -14,28 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
-    <id>http://www.yinfengblog.com/理解词法作用域与闭包/</id>
-    <published>2017-02-20T01:31:45.429Z</published>
-    <updated>2017-02-20T03:07:49.665Z</updated>
-    
-    <content type="html"><![CDATA[<hr>
-<p>title: 理解词法作用域与闭包<br>date: 2017-02-15 10:31:45<br>categories: JavaScript</p>
-<h2 id="tags-闭包"><a href="#tags-闭包" class="headerlink" title="tags: 闭包"></a>tags: 闭包</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;title: 理解词法作用域与闭包&lt;br&gt;date: 2017-02-15 10:31:45&lt;br&gt;categories: JavaScript&lt;/p&gt;
-&lt;h2 id=&quot;tags-闭包&quot;&gt;&lt;a href=&quot;#tags-闭包&quot; class=&quot;headerlink&quot; 
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>ES6学习笔记（一）</title>
@@ -207,6 +185,59 @@
     <summary type="html">
     
       &lt;p&gt;结合自己之前demo中的AJAX来学习前端跨域方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
+    
+    
+      <category term="跨域" scheme="http://www.yinfengblog.com/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>学习跨域请求解决方案恶搞(CORS、JSONP)</title>
+    <link href="http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
+    <id>http://www.yinfengblog.com/理解词法作用域与闭包/</id>
+    <published>2017-02-06T12:21:39.000Z</published>
+    <updated>2017-02-20T03:19:58.222Z</updated>
+    
+    <content type="html"><![CDATA[<p>阅读了《你不知道的JavaScript》上卷，结合《高程》，对词法作用域、闭包及模块模式做一个简单的总结。<br><a id="more"></a><br>理解词法作用域可以让我们更好的理解闭包。而学习词法作用域需要对编译的步骤有所了解。</p>
+<h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤（步骤的具体内容省略），统称为“编译”。</p>
+<ul>
+<li>分词/词法分析</li>
+</ul>
+<p>这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块，这些代<br>码块被称为词法单元（token）。例如，考虑程序var a = 2;。这段程序通常会被分解成<br>为下面这些词法单元：var、a、=、2 、;。空格是否会被当作词法单元，取决于空格在<br>这门语言中是否具有意义。</p>
+<ul>
+<li>解析/语法分析</li>
+</ul>
+<p>这个过程是将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法<br>结构的树。这个树被称为“抽象语法树”（Abstract Syntax Tree，AST）。<br>var a = 2; 的抽象语法树中可能会有一个叫作VariableDeclaration 的顶级节点，接下<br>来是一个叫作Identifier（它的值是a）的子节点，以及一个叫作AssignmentExpression<br>的子节点。AssignmentExpression 节点有一个叫作NumericLiteral（它的值是2）的子<br>节点。</p>
+<ul>
+<li>代码生成</li>
+</ul>
+<p>将AST 转换为可执行代码的过程称被称为代码生成。这个过程与语言、目标平台等息<br>息相关。<br>抛开具体细节，简单来说就是有某种方法可以将var a = 2; 的AST 转化为一组机器指<br>令，用来创建一个叫作a 的变量（包括分配内存等），并将一个值储存在a 中。</p>
+<hr>
+<p>比起那些编译过程只有三个步骤的语言的编译器，JavaScript 引擎要复杂得多。例如，在语法分析和代码生成阶段有特定的步骤来对运行性能进行优化。</p>
+<p>作用域共有两种主要的工作模型。第一种是最为普遍的，被大多数编程语言所采用的词法作用域。另外一种叫作动态作用域。</p>
+<h2 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h2><p>就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。词法作用域取决于源码，通过静态分析就能确定，因此词法作用域也叫做静态作用域。with和eval除外，所以只能说JS的作用域机制非常接近词法作用域。</p>
+<p><strong> 闭包是基于词法作用域书写代码时所产生的自然结果 </strong></p>
+<h2 id="典型的闭包："><a href="#典型的闭包：" class="headerlink" title="典型的闭包："></a>典型的闭包：</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> bar;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();</div></pre></td></tr></table></figure>
+<p>函数bar() 的词法作用域能够访问foo() 的内部作用域。然后我们将bar() 函数本身当作一个值类型进行传递。在这个例子中，我们将bar 所引用的函数对象本身当作返回值。</p>
+<p>在foo() 执行后，其返回值（也就是内部的bar() 函数）赋值给变量baz 并调用baz()，实际上只是通过不同的标识符引用调用了内部的函数bar()。</p>
+<p>bar() 显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行，而且它可以访问定义时的词法作用域，因此可以访问变量a。</p>
+<p><strong> 闭包与词法作用域的关系 </strong>：无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</p>
+<hr>
+<h2 id="闭包与Module模式"><a href="#闭包与Module模式" class="headerlink" title="闭包与Module模式"></a>闭包与Module模式</h2><p>模块模式使用闭包封装‘私有’状态和组织。它提供了一种包装混合公有/私有方法和变量的方式，防止其泄露至全局作用域，并与别的开发人员的接口发生冲突。通过该模式，只需返回一个公有API，而其他的一切则都维持在私有的闭包里。</p>
+<p>模块模式的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myModule = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 私有变量和私有函数</span></div><div class="line">    <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//共有方法和属性</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">publicProperty</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">        <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            privateVariable++;</div><div class="line">            <span class="keyword">return</span> privateFunction();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h2 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h2><p>闭包的一个很重要的作用就是隐藏变量和函数。</p>
+<p>如果所有变量和函数都在全局作用域中，当然可以在所有的内部嵌套作用域中访问到它们。但可能会暴漏过多的变量或函数，而这些变量或函数本应该是私有的，正确的代码应该是可以阻止对这些变量或函数进行访问的。</p>
+<h2 id="闭包的缺点"><a href="#闭包的缺点" class="headerlink" title="闭包的缺点"></a>闭包的缺点</h2><p>创建闭包必须维护额外的作用域，过度使用它们可能会占用大量内存。</p>
+<p>由于IE9之前的版本对JScript对象和COM对象使用不同的垃圾收集例程，因此闭包在IE的这些版本中可能会导致内存泄漏</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;阅读了《你不知道的JavaScript》上卷，结合《高程》，对词法作用域、闭包及模块模式做一个简单的总结。&lt;br&gt;
     
     </summary>
     
