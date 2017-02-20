@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2017-02-20T03:22:17.499Z</lastmod>
+    <loc>http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2017-02-20T03:26:32.849Z</lastmod>
     <data>
         <display>
-        <title>ES6学习笔记（一）</title>
-        <pubTime>2017-02-10T05:27:55.000Z</pubTime>
+        <title>理解词法作用域与闭包</title>
+        <pubTime>2017-02-12T02:31:45.000Z</pubTime>
         
-        <tag>ES6</tag>
+        <tag>闭包</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-    <loc>http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/</loc>
-    <lastmod>2017-02-20T03:22:12.973Z</lastmod>
+    <loc>http://www.yinfengblog.com/ES6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2017-02-20T03:22:17.499Z</lastmod>
     <data>
         <display>
-        <title>理解词法作用域与闭包</title>
-        <pubTime>2017-02-12T02:31:45.000Z</pubTime>
+        <title>ES6学习笔记（一）</title>
+        <pubTime>2017-02-10T05:27:55.000Z</pubTime>
         
-        <tag>闭包</tag>
+        <tag>ES6</tag>
          
          
            

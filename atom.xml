@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-02-20T03:22:12.973Z</updated>
+  <updated>2017-02-20T03:26:32.849Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,10 +20,10 @@
     <link href="http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
     <id>http://www.yinfengblog.com/理解词法作用域与闭包/</id>
     <published>2017-02-12T02:31:45.000Z</published>
-    <updated>2017-02-20T03:22:12.973Z</updated>
+    <updated>2017-02-20T03:26:32.849Z</updated>
     
     <content type="html"><![CDATA[<p>阅读了《你不知道的JavaScript》上卷，结合《高程》，对词法作用域、闭包及模块模式做一个简单的总结。<br><a id="more"></a><br>理解词法作用域可以让我们更好的理解闭包。而学习词法作用域需要对编译的步骤有所了解。</p>
-<h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤（步骤的具体内容省略），统称为“编译”。</p>
+<h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤，统称为“编译”。</p>
 <ul>
 <li>分词/词法分析</li>
 </ul>
