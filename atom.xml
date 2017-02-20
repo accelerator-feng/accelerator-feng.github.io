@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-02-20T03:27:59.631Z</updated>
+  <updated>2017-02-20T03:28:36.361Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/%E7%90%86%E8%A7%A3%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%8E%E9%97%AD%E5%8C%85/"/>
     <id>http://www.yinfengblog.com/理解词法作用域与闭包/</id>
     <published>2017-02-12T02:31:45.000Z</published>
-    <updated>2017-02-20T03:27:59.631Z</updated>
+    <updated>2017-02-20T03:28:36.361Z</updated>
     
     <content type="html"><![CDATA[<p>阅读了《你不知道的JavaScript》上卷，结合《高程》，对词法作用域、闭包及模块模式做一个简单的总结。<br><a id="more"></a><br>理解词法作用域可以让我们更好的理解闭包。而学习词法作用域需要对编译的步骤有所了解。</p>
 <h2 id="关于编译原理"><a href="#关于编译原理" class="headerlink" title="关于编译原理"></a>关于编译原理</h2><p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤，统称为“编译”。</p>
@@ -45,7 +45,6 @@
 <p>在foo() 执行后，其返回值（也就是内部的bar() 函数）赋值给变量baz 并调用baz()，实际上只是通过不同的标识符引用调用了内部的函数bar()。</p>
 <p>bar() 显然可以被正常执行。但是在这个例子中，它在自己定义的词法作用域以外的地方执行，而且它可以访问定义时的词法作用域，因此可以访问变量a。</p>
 <p><strong> 闭包与词法作用域的关系 </strong>：无论通过何种手段将内部函数传递到所在的词法作用域以外，它都会持有对原始定义作用域的引用，无论在何处执行这个函数都会使用闭包。</p>
-<hr>
 <h2 id="闭包与Module模式"><a href="#闭包与Module模式" class="headerlink" title="闭包与Module模式"></a>闭包与Module模式</h2><p>模块模式使用闭包封装‘私有’状态和组织。它提供了一种包装混合公有/私有方法和变量的方式，防止其泄露至全局作用域，并与别的开发人员的接口发生冲突。通过该模式，只需返回一个公有API，而其他的一切则都维持在私有的闭包里。</p>
 <p>模块模式的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myModule = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// 私有变量和私有函数</span></div><div class="line">    <span class="keyword">var</span> privateVariable = <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//共有方法和属性</span></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">publicProperty</span>: <span class="literal">true</span>,</div><div class="line"></div><div class="line">        <span class="attr">publicMethod</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            privateVariable++;</div><div class="line">            <span class="keyword">return</span> privateFunction();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <h2 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h2><p>闭包的一个很重要的作用就是隐藏变量和函数。</p>
