@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-03-20T16:38:20.754Z</updated>
+  <updated>2017-03-20T16:39:26.571Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://www.yinfengblog.com/%E6%8E%92%E5%BA%8F%E5%92%8C%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/"/>
     <id>http://www.yinfengblog.com/排序和搜索算法/</id>
     <published>2017-02-25T13:42:33.000Z</published>
-    <updated>2017-03-20T16:38:20.754Z</updated>
+    <updated>2017-03-20T16:39:26.571Z</updated>
     
-    <content type="html"><![CDATA[<p>学习常见的排序和搜索算法<br><a id="more"></a> </p>
+    <content type="html"><![CDATA[<p>学习常见的排序和搜索算法。<br><a id="more"></a> </p>
 <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们<br>交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> len = arr.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</div><div class="line">                [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (arr);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序大致的思路是找到数据结构中的最小值并将其放置在第一位，接着找到第二小的值并将其放在第二位，以此类推。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectionSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> len = arr.length,</div><div class="line">        minIndex = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</div><div class="line">        minIndex = i;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; len; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;</div><div class="line">                minIndex = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (arr);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。</p>
@@ -43,7 +43,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;学习常见的排序和搜索算法&lt;br&gt;
+      &lt;p&gt;学习常见的排序和搜索算法。&lt;br&gt;
     
     </summary>
     
