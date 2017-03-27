@@ -4,19 +4,35 @@
 
     
   <url>
+    <loc>http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2017-03-27T13:03:40.042Z</lastmod>
+    <data>
+        <display>
+        <title>FCC初级编程题整理</title>
+        <pubTime>2017-01-19T08:06:37.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="算法" url="http://www.yinfengblog.com/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.yinfengblog.com/FCC%E4%B8%AD%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2017-03-27T13:01:30.219Z</lastmod>
+    <lastmod>2017-03-27T13:03:22.531Z</lastmod>
     <data>
         <display>
         <title>FCC中级编程题整理</title>
         <pubTime>2017-03-16T05:33:21.000Z</pubTime>
         
-        <tag>编程练习</tag>
-         
          
            
              
-              <breadCrumb title="JavaScript" url="http://www.yinfengblog.com/categories/JavaScript/"/>
+              <breadCrumb title="算法" url="http://www.yinfengblog.com/categories/%E7%AE%97%E6%B3%95/"/>
           
         </display>
     </data>
@@ -90,26 +106,6 @@
         <pubTime>2017-02-06T12:21:39.000Z</pubTime>
         
         <tag>跨域</tag>
-         
-         
-           
-             
-              <breadCrumb title="JavaScript" url="http://www.yinfengblog.com/categories/JavaScript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.yinfengblog.com/FCC%E5%88%9D%E7%BA%A7%E7%AE%97%E6%B3%95%E9%A2%98%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2017-02-19T12:26:17.247Z</lastmod>
-    <data>
-        <display>
-        <title>FCC初级编程题整理</title>
-        <pubTime>2017-01-19T08:06:37.000Z</pubTime>
-        
-        <tag>编程练习</tag>
          
          
            
