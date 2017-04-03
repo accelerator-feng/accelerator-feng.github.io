@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.yinfengblog.com/学习前端模块化/index.html">
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="学习CommonJS、AMD、ES6 Module以及UMD。">
-<meta property="og:updated_time" content="2017-04-03T14:27:01.944Z">
+<meta property="og:updated_time" content="2017-04-03T14:40:43.339Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习前端模块化">
 <meta name="twitter:description" content="学习CommonJS、AMD、ES6 Module以及UMD。">
@@ -109,12 +109,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li></ol>
 		
 		</div>
 		
 		<p>学习CommonJS、AMD、ES6 Module以及UMD。<br><a id="more"></a> </p>
-<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1>  
+<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><p>Node应用由模块组成，采用CommonJS模块规范。</p>
+<p>根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p>
+<p>CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> addX = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value + x;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports.x = x;</div><div class="line"><span class="built_in">module</span>.exports.addX = addX;</div></pre></td></tr></table></figure>
+<p>上面代码通过module.exports输出变量x和函数addX。</p>
+<p>require方法用于加载模块。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> example = <span class="built_in">require</span>(<span class="string">'./example.js'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(example.x); <span class="comment">// 5</span></div><div class="line"><span class="built_in">console</span>.log(example.addX(<span class="number">1</span>)); <span class="comment">// 6</span></div></pre></td></tr></table></figure></p>
+<p>CommonJS模块特点:</p>
+<ul>
+<li>所有代码都运行在模块作用域，不会污染全局作用域。</li>
+<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。</li>
+<li>模块加载的顺序，按照其在代码中出现的顺序。</li>
+</ul>
+<p>CommonJS以服务器优先的方式来同步载入模块。</p>
+<p>对于浏览器，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。</p>
+<h1 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h1>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -172,7 +186,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li></ol>
  
   </div>
 
