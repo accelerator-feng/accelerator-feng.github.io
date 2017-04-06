@@ -145,7 +145,7 @@
     <link href="http://www.yinfengblog.com/%E6%8E%92%E5%BA%8F%E5%92%8C%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/"/>
     <id>http://www.yinfengblog.com/排序和搜索算法/</id>
     <published>2017-02-25T13:42:33.000Z</published>
-    <updated>2017-03-20T16:42:02.459Z</updated>
+    <updated>2017-04-06T15:31:18.333Z</updated>
     
     <content type="html"><![CDATA[<p>学习常见的排序和搜索算法。<br><a id="more"></a> </p>
 <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序是一种简单直观的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubbleSort</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line">    <span class="keyword">const</span> len = arr.length;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++) &#123;</div><div class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</div><div class="line">                [arr[j], arr[j + <span class="number">1</span>]] = [arr[j + <span class="number">1</span>], arr[j]];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> (arr);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -172,8 +172,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://www.yinfengblog.com/categories/%E7%AE%97%E6%B3%95/"/>
     
+      <category term="算法" scheme="http://www.yinfengblog.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
