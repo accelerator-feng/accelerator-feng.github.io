@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-04-06T15:22:25.719Z</updated>
+  <updated>2017-04-06T15:30:27.185Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
     <id>http://www.yinfengblog.com/学习前端模块化/</id>
     <published>2017-03-26T14:23:45.000Z</published>
-    <updated>2017-04-06T15:22:25.719Z</updated>
+    <updated>2017-04-06T15:30:27.185Z</updated>
     
     <content type="html"><![CDATA[<p>学习CommonJS、AMD、ES6 Module以及UMD。<br><a id="more"></a> </p>
 <h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><p>Node应用由模块组成，采用CommonJS模块规范。</p>
@@ -53,8 +53,6 @@
     
       <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
     
-    
-      <category term="ES6" scheme="http://www.yinfengblog.com/tags/ES6/"/>
     
   </entry>
   
