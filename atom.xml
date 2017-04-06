@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.yinfengblog.com/"/>
-  <updated>2017-03-27T13:53:32.889Z</updated>
+  <updated>2017-04-06T15:22:25.719Z</updated>
   <id>http://www.yinfengblog.com/</id>
   
   <author>
@@ -14,6 +14,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>学习前端模块化</title>
+    <link href="http://www.yinfengblog.com/%E5%AD%A6%E4%B9%A0%E5%89%8D%E7%AB%AF%E6%A8%A1%E5%9D%97%E5%8C%96/"/>
+    <id>http://www.yinfengblog.com/学习前端模块化/</id>
+    <published>2017-03-26T14:23:45.000Z</published>
+    <updated>2017-04-06T15:22:25.719Z</updated>
+    
+    <content type="html"><![CDATA[<p>学习CommonJS、AMD、ES6 Module以及UMD。<br><a id="more"></a> </p>
+<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><p>Node应用由模块组成，采用CommonJS模块规范。</p>
+<p>根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p>
+<p>CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> addX = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value + x;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports.x = x;</div><div class="line"><span class="built_in">module</span>.exports.addX = addX;</div></pre></td></tr></table></figure>
+<p>上面代码通过module.exports输出变量x和函数addX。</p>
+<p>require方法用于加载模块。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> example = <span class="built_in">require</span>(<span class="string">'./example.js'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(example.x); <span class="comment">// 5</span></div><div class="line"><span class="built_in">console</span>.log(example.addX(<span class="number">1</span>)); <span class="comment">// 6</span></div></pre></td></tr></table></figure></p>
+<p>CommonJS模块特点:</p>
+<ul>
+<li>所有代码都运行在模块作用域，不会污染全局作用域。</li>
+<li>模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。</li>
+<li>模块加载的顺序，按照其在代码中出现的顺序。</li>
+</ul>
+<p>CommonJS以服务器优先的方式来同步载入模块。</p>
+<p>对于浏览器，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。</p>
+<h1 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h1><p>AMD是”Asynchronous Module Definition”的缩写，意思就是”异步模块定义”。它采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">define([<span class="string">'myModule'</span>, <span class="string">'myOtherModule'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myModule, myOtherModule</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(myModule.hello());</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>第一个参数是一个数组，里面的成员就是要加载的模块；第二个参数是加载成功之后的回调函数。</p>
+<h1 id="UMD"><a href="#UMD" class="headerlink" title="UMD"></a>UMD</h1><p>因为AMD，CommonJS规范是两种不一致的规范，虽然他们应用的场景也不太一致，但是人们仍然是期望有一种统一的规范来支持这两种规范。于是，UMD（Universal Module Definition，称之为 通用模块规范 ）规范诞生了。</p>
+<p>客观来说，这个UMD规范看起来的确没有AMD和CommonJS规范简约。但是它支持AMD和CommonJS规范，同时还支持古老的全局模块模式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">root, factory</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> define === <span class="string">'function'</span> &amp;&amp; define.amd) &#123;</div><div class="line">      <span class="comment">// AMD</span></div><div class="line">    define([<span class="string">'myModule'</span>, <span class="string">'myOtherModule'</span>], factory);</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> exports === <span class="string">'object'</span>) &#123;</div><div class="line">      <span class="comment">// CommonJS</span></div><div class="line">    <span class="built_in">module</span>.exports = factory(<span class="built_in">require</span>(<span class="string">'myModule'</span>), <span class="built_in">require</span>(<span class="string">'myOtherModule'</span>));</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// Browser globals (Note: root is window)</span></div><div class="line">    root.returnExports = factory(root.myModule, root.myOtherModule);</div><div class="line">  &#125;</div><div class="line">&#125;(<span class="keyword">this</span>, <span class="function"><span class="keyword">function</span> (<span class="params">myModule, myOtherModule</span>) </span>&#123;</div><div class="line">  <span class="comment">// Methods</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">notHelloOrGoodbye</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">// A private method</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">// A public method because it's returned (see below)</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">goodbye</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">// A public method because it's returned (see below)</span></div><div class="line"></div><div class="line">  <span class="comment">// Exposed public methods</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">hello</span>: hello,</div><div class="line">      <span class="attr">goodbye</span>: goodbye</div><div class="line">  &#125;</div><div class="line">&#125;));</div></pre></td></tr></table></figure></p>
+<h1 id="ES6-Module"><a href="#ES6-Module" class="headerlink" title="ES6 Module"></a>ES6 Module</h1><p>ES6 在语言标准的层面上，实现了模块功能，而且实现得相当简单，完全可以取代 CommonJS 和 AMD 规范，成为浏览器和服务器通用的模块解决方案。</p>
+<p>export语句输出的接口，与其对应的值是动态绑定关系，即通过该接口，可以取到模块内部实时的值。这一点与 CommonJS 规范完全不同。CommonJS 模块输出的是值的缓存，不存在动态更新。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;学习CommonJS、AMD、ES6 Module以及UMD。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://www.yinfengblog.com/categories/JavaScript/"/>
+    
+    
+      <category term="ES6" scheme="http://www.yinfengblog.com/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>FCC中级编程题整理</title>
