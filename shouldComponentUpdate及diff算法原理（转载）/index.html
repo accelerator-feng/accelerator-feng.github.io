@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
 <meta property="og:image" content="http://i4.buimg.com/582196/6b65e9dd428d2450.png">
-<meta property="og:updated_time" content="2017-05-11T13:18:52.000Z">
+<meta property="og:updated_time" content="2017-05-11T13:19:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shouldComponentUpdate及diff算法原理（转载）">
 <meta name="twitter:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
@@ -123,11 +123,11 @@
 <p>当组件的props和state变更时，React会将最新返回的元素与之前旧的元素进行对比来确定是否真的需要重新渲染真实的Dom。当他们不相等时，React会更新真实的Dom。</p>
 <p>在某些情况下，可以在自定义组件中重载<code>shouldComponentUpdate</code>方法来加速触发渲染的比对的过程。该方法的默认实现返回参数为true，此时React将按照原来的方式进行比对和渲染：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">shouldComponentUpdate(nextProps, nextState) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果在某些情况下能够清晰的明确组件不需要重新渲染，可以在<code>shouldComponentUpdate</code>;方法中返回<code>false</code>，这样会让让组件跳过整个渲染过程，包括不再调用当前组件和子组件的render()方法。</p>
-<h3 id="shouldComponentUpdate-的执行过程"><a href="#shouldComponentUpdate-的执行过程" class="headerlink" title="shouldComponentUpdate 的执行过程"></a>shouldComponentUpdate 的执行过程</h3><p>下面是一个组件结构树。图中，“SCU”表示<code>shouldComponentUpdate</code>;方法返回的值（绿色true，红色fasle），“vDOMEq”表示React的匹配是否一致（绿色true，红色fasle），有颜色的红圈表示是否执行了UI重绘（绿色表示没重绘，红色表示执行重绘）。</p>
+<p>如果在某些情况下能够清晰的明确组件不需要重新渲染，可以在<code>shouldComponentUpdate</code>方法中返回<code>false</code>，这样会让让组件跳过整个渲染过程，包括不再调用当前组件和子组件的render()方法。</p>
+<h3 id="shouldComponentUpdate-的执行过程"><a href="#shouldComponentUpdate-的执行过程" class="headerlink" title="shouldComponentUpdate 的执行过程"></a>shouldComponentUpdate 的执行过程</h3><p>下面是一个组件结构树。图中，“SCU”表示<code>shouldComponentUpdate</code>方法返回的值（绿色true，红色fasle），“vDOMEq”表示React的匹配是否一致（绿色true，红色fasle），有颜色的红圈表示是否执行了UI重绘（绿色表示没重绘，红色表示执行重绘）。</p>
 <p><img src="http://i4.buimg.com/582196/6b65e9dd428d2450.png"></p>
-<p>在C2组件中，<code>houldComponentUpdate</code>方法返回了false，所以React不会判断是否需要重新渲染C2并且不执行render()方法，&nbsp;因此在C4和C5中不再执行<code>shouldComponentUpdate</code>;方法。</p>
-<p>对于C1和C3，<code>shouldComponentUpdate</code>;都返回了true，所以React必须对着2个组件进行比对。对于C6，<code>shouldComponentUpdate</code>;返回true，而且比对的结果是需要UI重绘，因此C6会更新他们的真实Dom。</p>
+<p>在C2组件中，<code>houldComponentUpdate</code>方法返回了false，所以React不会判断是否需要重新渲染C2并且不执行render()方法，&nbsp;因此在C4和C5中不再执行<code>shouldComponentUpdate</code>方法。</p>
+<p>对于C1和C3，<code>shouldComponentUpdate</code>都返回了true，所以React必须对着2个组件进行比对。对于C6，<code>shouldComponentUpdate</code>返回true，而且比对的结果是需要UI重绘，因此C6会更新他们的真实Dom。</p>
 <p>还有一个值得关心的组件是C8，React在这个组件中执行了render()方法，但是由于虚拟Dom并没有发生变更，前后比对一致，所以并没有发生真实Dom渲染。</p>
 <p>在整个过程中React仅仅变更了C6组件的UI样式，C8由于前后虚拟Dom一致因此没有真正的执行UI渲染。C2、C2的子组件以及C7没有执行render()方法。</p>
 <h3 id="一个shouldComponentUpdate的例子"><a href="#一个shouldComponentUpdate的例子" class="headerlink" title="一个shouldComponentUpdate的例子"></a>一个shouldComponentUpdate的例子</h3><p>在例子中，当props.color和state.count发生变更时进行UI渲染，我们在<code>shouldComponentUpdate</code>方法中进行检查：</p>
