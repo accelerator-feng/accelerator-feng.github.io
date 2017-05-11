@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
 <meta property="og:image" content="http://i4.buimg.com/582196/6b65e9dd428d2450.png">
-<meta property="og:updated_time" content="2017-05-11T13:25:32.000Z">
+<meta property="og:updated_time" content="2017-05-11T13:25:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shouldComponentUpdate及diff算法原理（转载）">
 <meta name="twitter:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
@@ -117,7 +117,8 @@
 		
 		<p>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）<br><a id="more"></a> </p>
 <blockquote>
-<p>原文链接：<a href="https://my.oschina.net/chkui/blog/874483" target="_blank" rel="external">https://my.oschina.net/chkui/blog/874483</a><br>原文链接：<a href="https://my.oschina.net/chkui/blog/876180" target="_blank" rel="external">https://my.oschina.net/chkui/blog/876180</a></p>
+<p>原文链接：<a href="https://my.oschina.net/chkui/blog/874483" target="_blank" rel="external">https://my.oschina.net/chkui/blog/874483</a></p>
+<p>原文链接：<a href="https://my.oschina.net/chkui/blog/876180" target="_blank" rel="external">https://my.oschina.net/chkui/blog/876180</a></p>
 </blockquote>
 <h2 id="shouldComponentUpdate原理"><a href="#shouldComponentUpdate原理" class="headerlink" title="shouldComponentUpdate原理"></a>shouldComponentUpdate原理</h2><p>React构建和维护了一个内部的虚拟Dom，这个Dom和真实的UI是相互映射的关系，他包含从用户自定义组件中返回的各种React元素。这个虚拟的Dom使得React可以避免重复渲染相同的Dom节点并在访问存在的节点时直接使用React的虚拟层数据，这样设计的原因是重复渲染浏览器或web view的UI比操作一个JavaScript的对象要慢许多。在React Native也采用同样的处理方式。</p>
 <p>当组件的props和state变更时，React会将最新返回的元素与之前旧的元素进行对比来确定是否真的需要重新渲染真实的Dom。当他们不相等时，React会更新真实的Dom。</p>
