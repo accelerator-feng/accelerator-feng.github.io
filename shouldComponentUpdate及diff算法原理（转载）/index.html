@@ -1,0 +1,565 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>shouldComponentUpdate及diff算法原理（转载） | 和光同尘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Yin Feng">
+    
+
+    
+    <meta name="description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shouldComponentUpdate及diff算法原理（转载）">
+<meta property="og:url" content="http://www.yinfengblog.com/shouldComponentUpdate及diff算法原理（转载）/index.html">
+<meta property="og:site_name" content="和光同尘">
+<meta property="og:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0406/182936_ZTAG_2649413.png">
+<meta property="og:updated_time" content="2017-05-11T12:55:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shouldComponentUpdate及diff算法原理（转载）">
+<meta name="twitter:description" content="React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）">
+<meta name="twitter:image" content="https://static.oschina.net/uploads/space/2017/0406/182936_ZTAG_2649413.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="和光同尘" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="和光同尘" title="和光同尘"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="和光同尘">和光同尘</a></h1>
+				<h2 class="blog-motto">前端小白的学习笔记</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/categories">categories</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/shouldComponentUpdate及diff算法原理（转载）/" title="shouldComponentUpdate及diff算法原理（转载）" itemprop="url">shouldComponentUpdate及diff算法原理（转载）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Yin Feng" target="_blank" itemprop="author">Yin Feng</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-11T12:22:08.000Z" itemprop="datePublished"> 发表于 2017-05-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#shouldComponentUpdate原理"><span class="toc-number">1.</span> <span class="toc-text">shouldComponentUpdate原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate-的执行过程"><span class="toc-number">1.1.</span> <span class="toc-text">shouldComponentUpdate 的执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个shouldComponentUpdate的例子"><span class="toc-number">1.2.</span> <span class="toc-text">一个shouldComponentUpdate的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非突变数据的价值"><span class="toc-number">1.3.</span> <span class="toc-text">非突变数据的价值</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>React官方文档中关于shouldComponentUpdate和diff算法的部分（翻译）<br><a id="more"></a> </p>
+<h2 id="shouldComponentUpdate原理"><a href="#shouldComponentUpdate原理" class="headerlink" title="shouldComponentUpdate原理"></a>shouldComponentUpdate原理</h2><p>React构建和维护了一个内部的虚拟Dom，这个Dom和真实的UI是相互映射的关系，他包含从用户自定义组件中返回的各种React元素。这个虚拟的Dom使得React可以避免重复渲染相同的Dom节点并在访问存在的节点时直接使用React的虚拟层数据，这样设计的原因是重复渲染浏览器或web view的UI比操作一个JavaScript的对象要慢许多。在React Native也采用同样的处理方式。</p>
+<p>当组件的props和state变更时，React会将最新返回的元素与之前旧的元素进行对比来确定是否真的需要重新渲染真实的Dom。当他们不相等时，React会更新真实的Dom。</p>
+<p>在某些情况下，可以在自定义组件中重载<code>shouldComponentUpdate</code>方法来加速触发渲染的比对的过程。该方法的默认实现返回参数为true，此时React将按照原来的方式进行比对和渲染：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">shouldComponentUpdate(nextProps, nextState) &#123;</div><div class="line">  <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果在某些情况下能够清晰的明确组件不需要重新渲染，可以在<code>shouldComponentUpdate</code>;方法中返回<code>false</code>，这样会让让组件跳过整个渲染过程，包括不再调用当前组件和子组件的render()方法。</p>
+<h3 id="shouldComponentUpdate-的执行过程"><a href="#shouldComponentUpdate-的执行过程" class="headerlink" title="shouldComponentUpdate 的执行过程"></a>shouldComponentUpdate 的执行过程</h3><p>下面是一个组件结构树。图中，“SCU”表示<code>shouldComponentUpdate</code>;方法返回的值（绿色true，红色fasle），“vDOMEq”表示React的匹配是否一致（绿色true，红色fasle），有颜色的红圈表示是否执行了UI重绘（绿色表示没重绘，红色表示执行重绘）。</p>
+<p style="text-align:center"><img alt="" height="371" src="https://static.oschina.net/uploads/space/2017/0406/182936_ZTAG_2649413.png" width="555"></p>
+
+<p>在C2组件中，<code>houldComponentUpdate</code>方法返回了false，所以React不会判断是否需要重新渲染C2并且不执行render()方法，&nbsp;因此在C4和C5中不再执行<code>shouldComponentUpdate</code>;方法。</p>
+<p>对于C1和C3，<code>shouldComponentUpdate</code>;都返回了true，所以React必须对着2个组件进行比对。对于C6，<code>shouldComponentUpdate</code>;返回true，而且比对的结果是需要UI重绘，因此C6会更新他们的真实Dom。</p>
+<p>还有一个值得关心的组件是C8，React在这个组件中执行了render()方法，但是由于虚拟Dom并没有发生变更，前后比对一致，所以并没有发生真实Dom渲染。</p>
+<p>在整个过程中React仅仅变更了C6组件的UI样式，C8由于前后虚拟Dom一致因此没有真正的执行UI渲染。C2、C2的子组件以及C7没有执行render()方法。</p>
+<h3 id="一个shouldComponentUpdate的例子"><a href="#一个shouldComponentUpdate的例子" class="headerlink" title="一个shouldComponentUpdate的例子"></a>一个shouldComponentUpdate的例子</h3><p>在例子中，当props.color和state.count发生变更时进行UI渲染，我们在<code>shouldComponentUpdate</code>方法中进行检查：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CounterButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">count</span>: <span class="number">1</span>&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  shouldComponentUpdate(nextProps, nextState) &#123;</div><div class="line">    <span class="comment">//只判断props.color和nextState.count是否变更，其他情况均不渲染</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.props.color !== nextProps.color) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.state.count !== nextState.count) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;button</div><div class="line">        color=&#123;this.props.color&#125;</div><div class="line">        onClick=&#123;() =&gt; this.setState(state =&gt; (&#123;count: state.count + 1&#125;))&#125;&gt;</div><div class="line">        Count: &#123;this.state.count&#125;</div><div class="line">      &lt;/button&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在这段代码中，<code>shouldComponentUpdate</code>仅仅检查<code>props.color</code>和<code>state.count</code>是否发生变更，如果他们的值没有修改，组件将不会发生任何更新。在实际使用中，组件往往比这个复杂，我们可以使用类似于“浅比较”（关于浅比较可以参看：<a href="https://facebook.github.io/react/docs/shallow-compare.html" rel="external" target="_blank">Shallow Compare</a>）的模式来比对所有的属性或状态是否发生变更。React提供了这个模式的一个实现组件，只要让组件继承自<code>React.PureComponent</code>即可。我们可以将代码进行下面的修改：                                          </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//继承自React.PureComponent</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CounterButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;<span class="attr">count</span>: <span class="number">1</span>&#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;button</div><div class="line">        color=&#123;this.props.color&#125;</div><div class="line">        onClick=&#123;() =&gt; this.setState(state =&gt; (&#123;count: state.count + 1&#125;))&#125;&gt;</div><div class="line">        Count: &#123;this.state.count&#125;</div><div class="line">      &lt;/button&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在大部分情况下，只要使用<code>React.PureComponent</code>就可以代替我们自己重载<code>shouldComponentUpdate</code>方法，但是它仅仅适用于“浅比较”，所以这个组件不适用于props和state数据发生突变的情况。</p>
+<p><em>附：数据突变（mutated）是指变量的引用没有改变（指针地址未改变），但是引用指向的数据发生了变化（指针指向的数据发生变更）。例如<code>const x = {foo:&#39;foo&#39;}</code>。<code>x.foo=&#39;none&#39;</code>就是一个突变。</em></p>
+<p>在更复杂的数据结构中还会存在一些问题。例如下面的代码，我们希望<code>ListOfWords</code>组件将words参数渲染成一个逗号分隔的字符串，而父组件监控点击事件，每次点击都会增加一个单词到列表中，但是下面的代码并不会正确工作：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListOfWords</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">PureComponent</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;div&gt;&#123;this.props.words.join(',')&#125;&lt;/div&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordAdder</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      <span class="attr">words</span>: [<span class="string">'marklar'</span>]</div><div class="line">    &#125;;</div><div class="line">    <span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  handleClick() &#123;</div><div class="line">    <span class="comment">// 这段内容会导致代码不按照预期工作。</span></div><div class="line">    <span class="keyword">const</span> words = <span class="keyword">this</span>.state.words;</div><div class="line">    words.push(<span class="string">'marklar'</span>);</div><div class="line">    <span class="keyword">this</span>.setState(&#123;<span class="attr">words</span>: words&#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;button onClick=&#123;this.handleClick&#125; /&gt;</div><div class="line">        &lt;ListOfWords words=&#123;this.state.words&#125; /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>导致代码无法正常工作的原因是<code>PureComponent</code>仅仅对 this.props.words的新旧值进行“浅比较”。在words值在<code>handleClick</code>中被修改之后，即使有新的单词被添加到数组中，但是this.props.words的新旧值在进行比较时是一样的（引用对象比较），因此<code>ListOfWords</code>一直不会发生渲染。</p>
+<h3 id="非突变数据的价值"><a href="#非突变数据的价值" class="headerlink" title="非突变数据的价值"></a>非突变数据的价值</h3><p>有一个简单的方法预防上面提到的问题，就是在使用prop和state时防止数据发生突变。例如下面的例如，我们用数组的concat方法来代替等号“=”，这样在concat后会产生一个新的数组赋值给this.state.words：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">handleClick() &#123;</div><div class="line">  <span class="keyword">this</span>.setState(<span class="function"><span class="params">prevState</span> =&gt;</span> (&#123;</div><div class="line">    <span class="attr">words</span>: prevState.words.concat([<span class="string">'marklar'</span>])</div><div class="line">  &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ES6支持列表扩展语法，因此我们更容易在es6中实现非突变的数据赋值，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">handleClick() &#123;</div><div class="line">  <span class="keyword">this</span>.setState(<span class="function"><span class="params">prevState</span> =&gt;</span> (&#123;</div><div class="line">    <span class="attr">words</span>: [...prevState.words, <span class="string">'marklar'</span>],</div><div class="line">  &#125;));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>可以重写传统的赋值语句防止对象中的数据发生数据突变。下面的例子有一个名为<code>colormap</code>的对象，我们想在修改<code>colormap.right</code>的值时渲染组件，我们可以这样重写组件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateColorMap</span>(<span class="params">colormap</span>) </span>&#123;</div><div class="line">  colormap.right = <span class="string">'blue'</span>; <span class="comment">//浅拷贝，指针地址未变，数据发生变化。</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以使用&nbsp;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign" rel="external" target="_blank">Object.assign</a>&nbsp;方法来防止数据突变：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateColorMap</span>(<span class="params">colormap</span>) </span>&#123;</div><div class="line">  <span class="comment">// 深拷贝，修改返回对象的地址</span></div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.assign(&#123;&#125;, colormap, &#123;<span class="attr">right</span>: <span class="string">'blue'</span>&#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改后<code>updateColorMap</code>方法返回一个新的实例。需要注意的是某些浏览器不支持<code>Object.assign</code>方法，我们需要使用polyfill（差异化抹平，比如我们引入了babel-polyfill）来解决这个问题。<br>有一个新的JavaScript方案是使用 扩展传播特性（见 <a href="https://github.com/sebmarkbage/ecmascript-rest-spread" rel="external" target="_blank">object spread properties</a>）来解决数据突变问题，实现如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateColorMap</span>(<span class="params">colormap</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;...colormap, <span class="attr">right</span>: <span class="string">'blue'</span>&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果是构建React的App应用，那么以上方法都能够很好的支持，如果是在浏览器环境使用，需要引入polyfill机制。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/React/">React</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://www.yinfengblog.com/shouldComponentUpdate及diff算法原理（转载）/" data-title="shouldComponentUpdate及diff算法原理（转载） | 和光同尘" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/学习前端模块化/"  title="学习前端模块化">
+ <strong>下一篇：</strong><br/> 
+ <span>学习前端模块化
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="shouldComponentUpdate及diff算法原理（转载）/" data-title="shouldComponentUpdate及diff算法原理（转载）" data-url="http://www.yinfengblog.com/shouldComponentUpdate及diff算法原理（转载）/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#shouldComponentUpdate原理"><span class="toc-number">1.</span> <span class="toc-text">shouldComponentUpdate原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#shouldComponentUpdate-的执行过程"><span class="toc-number">1.1.</span> <span class="toc-text">shouldComponentUpdate 的执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个shouldComponentUpdate的例子"><span class="toc-number">1.2.</span> <span class="toc-text">一个shouldComponentUpdate的例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非突变数据的价值"><span class="toc-number">1.3.</span> <span class="toc-text">非突变数据的价值</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="accelerator-feng" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/demo/" title="demo">demo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/跨域/" title="跨域">跨域<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://weekly.75team.com/" target="_blank" title="奇舞周刊">奇舞周刊</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://taobaofed.org/categories/Web%E5%BC%80%E5%8F%91/" target="_blank" title="淘宝前端博客">淘宝前端博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ife.baidu.com/" target="_blank" title="百度IFE">百度IFE</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.freecodecamp.cn/accelerator-feng" target="_blank" title="我的freeCodeCamp">我的freeCodeCamp</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://vshaonian.github.io/" target="_blank" title="vshaonian">vshaonian</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 未来的前端攻城狮 <br/>
+			Stay hungry. Stay foolish.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/accelerator-feng" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/yin-feng-56-5/activities" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:619772719@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="Yin Feng">Yin Feng</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"yinfengblog"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?139cfd4f9fd4b7101ef49a9a6246a98b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
+
+<a href="https://github.com/accelerator-feng"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
