@@ -17,7 +17,7 @@
 <meta property="og:url" content="http://www.yinfengblog.com/学习前端模块化/index.html">
 <meta property="og:site_name" content="和光同尘">
 <meta property="og:description" content="学习CommonJS、AMD、ES6 Module以及UMD。">
-<meta property="og:updated_time" content="2017-05-10T12:02:13.000Z">
+<meta property="og:updated_time" content="2017-06-26T09:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习前端模块化">
 <meta name="twitter:description" content="学习CommonJS、AMD、ES6 Module以及UMD。">
@@ -109,12 +109,12 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJSm"><span class="toc-number">1.</span> <span class="toc-text">CommonJSm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UMD"><span class="toc-number">3.</span> <span class="toc-text">UMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">4.</span> <span class="toc-text">ES6 Module</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UMD"><span class="toc-number">3.</span> <span class="toc-text">UMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">4.</span> <span class="toc-text">ES6 Module</span></a></li></ol>
 		
 		</div>
 		
 		<p>学习CommonJS、AMD、ES6 Module以及UMD。<br><a id="more"></a> </p>
-<h1 id="CommonJSm"><a href="#CommonJSm" class="headerlink" title="CommonJSm"></a>CommonJSm</h1><p>Node应用由模块组成，采用CommonJS模块规范。</p>
+<h1 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h1><p>Node应用由模块组成，采用CommonJS模块规范。</p>
 <p>根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。</p>
 <p>CommonJS规范规定，每个模块内部，module变量代表当前模块。这个变量是一个对象，它的exports属性（即module.exports）是对外的接口。加载某个模块，其实是加载该模块的module.exports属性。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">5</span>;</div><div class="line"><span class="keyword">var</span> addX = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value + x;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">module</span>.exports.x = x;</div><div class="line"><span class="built_in">module</span>.exports.addX = addX;</div></pre></td></tr></table></figure>
@@ -165,10 +165,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/shouldComponentUpdate及diff算法原理（转载）/" title="shouldComponentUpdate及diff算法原理（转载）">
+ <a href="/shouldComponentUpdate及diff算法原理（转载）/" title="">
   <strong>上一篇：</strong><br/>
   <span>
-  shouldComponentUpdate及diff算法原理（转载）</span>
+  (no title)</span>
 </a>
 </div>
 
@@ -195,7 +195,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJSm"><span class="toc-number">1.</span> <span class="toc-text">CommonJSm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UMD"><span class="toc-number">3.</span> <span class="toc-text">UMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">4.</span> <span class="toc-text">ES6 Module</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CommonJS"><span class="toc-number">1.</span> <span class="toc-text">CommonJS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AMD"><span class="toc-number">2.</span> <span class="toc-text">AMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UMD"><span class="toc-number">3.</span> <span class="toc-text">UMD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Module"><span class="toc-number">4.</span> <span class="toc-text">ES6 Module</span></a></li></ol>
  
   </div>
 
@@ -219,7 +219,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>6</sup></a></li>
+			<li><a href="/categories/JavaScript/" title="JavaScript">JavaScript<sup>5</sup></a></li>
 		  
 		
 		  
@@ -244,10 +244,6 @@
 			
 		
 			
-				<li><a href="/tags/React/" title="React">React<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/demo/" title="demo">demo<sup>1</sup></a></li>
 			
 		
@@ -257,6 +253,8 @@
 		
 			
 				<li><a href="/tags/闭包/" title="闭包">闭包<sup>1</sup></a></li>
+			
+		
 			
 		
 		</ul>
@@ -303,7 +301,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
